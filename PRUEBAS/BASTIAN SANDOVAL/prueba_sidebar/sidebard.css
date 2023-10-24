@@ -1,13 +1,16 @@
 *{
     margin: 0px;
+    background: #BA8B02;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #181818, #BA8B02);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #181818, #BA8B02); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .sidebard{
-    width: 60px;
+    width: 70px;
     height: 100%;
     box-sizing: border-box;
     padding: 10px;
-    background-color: #7a7878cc;
     transition: ease-in-out 0.3s;
     overflow: hidden;
 }
@@ -22,7 +25,7 @@
 
 hr{
     height: 1px;
-    color: #ffffff;
+    color: #000000;
     margin: 15px 0;
 }
 
@@ -33,10 +36,10 @@ hr{
 }
 
 .item .icon{
-    width: 40px;
-    height: 35px;
+    width: 50px;
+    height: 45px;
     flex-shrink: 0;
-    fill: #424242;
+    fill: #d40000;
 }
 
 .item .text{
