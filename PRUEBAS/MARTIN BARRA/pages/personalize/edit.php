@@ -4,16 +4,16 @@
 
     $id = $_GET["id"];
 
-    $query = "SELECT * FROM marcas WHERE id=" . $id . ";";
+    $query = "SELECT * FROM personalize WHERE id=" . $id . ";";
     $result =  mysqli_query($connection, $query);
 
     if ($row = mysqli_fetch_assoc($result)) {
-        $nombre = $row["nombre"];
-        $origen = $row["origen"];
-        $logo = $row["logo"];
+       
+        $opcion = $row["opcion"];
+       
         $id = $row["id"];
     } else {
-        header("Location: index.php?p=brands/index");
+        header("Location: index.php?p=personalize/index");
     }
 ?>
 
@@ -25,27 +25,23 @@
 
 <main class="container mt-5">
     <div class="card">
-        <form action="pages/brands/actions/update.php" method="POST">
+        <form action="pages/personalize/actions/update.php" method="POST">
             <div class="card-body">
                 <div class="row">
                     <input type="text" class="d-none" name="id" value="<?php echo $id ?>">
 
-                    <div class="col-md-12 mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="nombre" placeholder="Japón" value="<?php echo $nombre ?>" required>
-                    </div>
+                   
 
                     <div class="col-md-12 mb-3">
+
+
                         <label for="origin" class="form-label">Origen</label>
-                        <select class="form-control" id="origin" name="origen">
-                            
+                        <select class="form-control" id="opcion" name="opcion">
+                           
                         </select>
                     </div>
 
-                    <div class="col-md-12 mb-3">
-                        <label for="logo" class="form-label">Logo</label>
-                        <input type="text" class="form-control" id="logo" name="logo" value="<?php echo $logo ?>">
-                    </div>
+                    
                 </div>
             </div>
 

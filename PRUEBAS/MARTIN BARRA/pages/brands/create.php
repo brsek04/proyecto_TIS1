@@ -22,9 +22,26 @@
                     <div class="col-md-12 mb-3">
                         <label for="origin" class="form-label">Origen</label>
                         <select class="form-control" id="origin" name="origen">
-                            <option value="Japón">Japón</option>
-                            <option value="China">China</option>
-                            <option value="Francia">Francia</option>
+                            
+                        <?php while ($fila = mysqli_fetch_array($result)) : ?>
+                        <tr>
+                            <th scope="row"><?= $fila['id'] ?></th>
+                            <td><?= $fila['nombre'] ?></td>
+                            <td><?= $fila['origen'] ?></td>
+                            <td><?= $fila['logo'] ?></td>
+                            <td>
+                                <a href="index.php?p=brands/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
+                                <a href="pages/brands/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            </td>
+                        </tr>
+
+                    <?php endwhile; ?>
+
+
+
+
+
+
                         </select>
                     </div>
 
