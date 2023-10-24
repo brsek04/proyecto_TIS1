@@ -22,27 +22,22 @@
                     <div class="col-md-12 mb-3">
                         <label for="origin" class="form-label">Origen</label>
                         <select class="form-control" id="origin" name="origen">
-                            
-                        <?php while ($fila = mysqli_fetch_array($result)) : ?>
-                        <tr>
-                            <th scope="row"><?= $fila['id'] ?></th>
-                            <td><?= $fila['nombre'] ?></td>
-                            <td><?= $fila['origen'] ?></td>
-                            <td><?= $fila['logo'] ?></td>
-                            <td>
-                                <a href="index.php?p=brands/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
-                                <a href="pages/brands/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
-                            </td>
-                        </tr>
+                            <option select disabled> seleccionar opcion</option>
+                                <?php
+                                    include("database/connection.php");
+                                    $sql = $connection -> query ("SELECT * FROM personalize");
+                                    while($resultado = $sql -> fetch_assoc()){
+                                        echo "<option value='".$resultado['id']."'>".$resultado['opcion']." ></option>";
+                                    }
 
-                    <?php endwhile; ?>
+
+                                ?>
+                                </select>
 
 
 
 
-
-
-                        </select>
+                       
                     </div>
 
                     <div class="col-md-12 mb-3">
