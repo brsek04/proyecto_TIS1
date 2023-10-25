@@ -1,12 +1,13 @@
 <?php
     include("../../../database/connection.php");
 
-    $personalize_id = $_POST["personalize_id"];
-    $nombre = $_POST["nombre"];
-    $origen = $_POST["origen"];
-    $logo = $_POST["logo"];
+   
+    $fechaIngreso = $_POST["fechaIngreso"];
+    $tipoEquipo = $_POST["tipoEquipo"];
+    $modelo = $_POST["modelo"];
+    $costo= $_POST["costo"];
 
-    $query = "INSERT INTO marcas (nombre, origen, logo, personalize_id) VALUES ('$nombre', '$origen', '$logo', '$personalize_id');";
+    $query = "INSERT INTO equipos (fechaIngreso, tipoEquipo, modelo,  costo) VALUES ('$fechaIngreso', '$tipoEquipo', '$modelo',  '$costo');";
 
     $result =  mysqli_query($connection, $query);
 

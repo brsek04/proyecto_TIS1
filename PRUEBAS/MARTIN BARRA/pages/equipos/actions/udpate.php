@@ -2,12 +2,13 @@
     include("../../../database/connection.php");
     
     $origenName = $POST["origenName"];
-    $nombre = $_POST["nombre"];
-    $origen= $_POST["origen"];
-    $logo = $_POST["logo"];
+    $fechaIngreso = $_POST["fechaIngreso"];
+    $tipoEquipo= $_POST["tipoEquipo"];
+    $modelo = $_POST["modelo"];
+    $costo = $_POST["costo"];
     $id= $_POST["id"];
     
-    $query = "UPDATE marcas SET nombre = '$nombre', origen= '$origen', logo='$logo' , personalize_id='$personalize_id' WHERE id = ".$id.";";
+    $query = "UPDATE equipos SET fechaIngreso = '$fechaIngreso', tipoEquipo= '$tipoEquipo', modelo='$modelo' , personalize_id='$personalize_id', costo='$costo' WHERE id = ".$id.";";
 
     $result =  mysqli_query($connection, $query);
 

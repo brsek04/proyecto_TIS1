@@ -15,13 +15,13 @@
                 <div class="row">
                 
                     <div class="col-md-12 mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="nombre" placeholder="Japón" required>
+                        <label for="fechaIngreso" class="form-label">fecha ingreso</label>
+                        <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" >
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label for="origin" class="form-label">Origen</label>
-                        <select class="form-control" id="origin" name="origen">
+                        <label for="tipoEquipo" class="form-label">tipo</label>
+                        <select class="form-control" id="tipoEquipo" name="tipoEquipo">
                             <option select disabled> seleccionar opcion</option>
                                 <?php
                                     include("database/connection.php");
@@ -39,11 +39,18 @@
 
                        
                     </div>
-
+                   
                     <div class="col-md-12 mb-3">
-                        <label for="logo" class="form-label">Logo</label>
-                        <input type="text" class="form-control" id="logo" name="logo" placeholder="logo.png">
+                        <label for="modelo" class="form-label">modelo</label>
+                        <input type="text" class="form-control" id="modelo" name="modelo" placeholder="">
                     </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="costo" class="form-label">costo</label>
+                        <input type="text" class="form-control" id="costo" name="costo" placeholder="">
+                    </div>
+
+
+
 
                 </div>
             </div>

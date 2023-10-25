@@ -4,13 +4,13 @@
 
     $id = $_GET["id"];
 
-    $query = "SELECT * FROM marcas WHERE id=" . $id . ";";
+    $query = "SELECT * FROM equipos WHERE id=" . $id . ";";
     $result =  mysqli_query($connection, $query);
 
     if ($row = mysqli_fetch_assoc($result)) {
-        $nombre = $row["nombre"];
-        $origen = $row["origen"];
-        $logo = $row["logo"];
+        $fechaIngreso = $row["fechaIngreso"];
+        $tipoEquipo = $row["tipoEquipo"];
+        $modelo = $row["modelo"];
         $id = $row["id"];
         
     } else {
@@ -32,13 +32,13 @@
                     <input type="text" class="d-none" name="id" value="<?php echo $id ?>">
 
                     <div class="col-md-12 mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="nombre" placeholder="Japón" value="<?php echo $nombre ?>" required>
+                        <label for="name" class="form-label">fecha ingreso</label>
+                        <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso"  value="<?php echo $fechaIngreso ?>" required>
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label for="originName" class="form-label">Origen</label>
-                        <select class="form-control" id="originName" name="origenName">
+                        <label for="tipoEquipo" class="form-label">tipo</label>
+                        <select class="form-control" id="tipoEquipo" name="tipoEquipo">
                             <option select disabled> seleccionar opcion</option>
                                 <?php
                                     include("database/connection.php");
@@ -53,9 +53,15 @@
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label for="logo" class="form-label">Logo</label>
-                        <input type="text" class="form-control" id="logo" name="logo" value="<?php echo $logo ?>">
+                        <label for="modelo" class="form-label">modelo</label>
+                        <input type="text" class="form-control" id="modelo" name="modelo" value="<?php echo $modelo ?>">
                     </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="costo" class="form-label">costo</label>
+                        <input type="text" class="form-control" id="costo" name="costo" value="<?php echo $costo ?>">
+                    </div>                 
+
+
                 </div>
             </div>
 

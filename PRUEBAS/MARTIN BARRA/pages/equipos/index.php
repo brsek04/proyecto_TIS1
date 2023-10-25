@@ -2,9 +2,9 @@
 include("database/connection.php");  // Incluye la conexión
 include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
 
-$query = "SELECT marcas.*, personalize.opcion AS nombreOpcion
-FROM marcas
-LEFT JOIN personalize ON marcas.origen = personalize.id;
+$query = "SELECT equipos.*, personalize.opcion AS nombreOpcion
+FROM equipos
+LEFT JOIN personalize ON equipos.tipoEquipo = personalize.id;
 ";
 $result = mysqli_query($connection, $query);
 ?>
@@ -47,15 +47,15 @@ $result = mysqli_query($connection, $query);
                     <?php while ($fila = mysqli_fetch_array($result)) : ?>
                         <tr>
                             <th scope="row"><?= $fila['id'] ?></th>
-                            <td><?= $fila['nombre'] ?></td>
-                            <td><?= $fila['origen'] ?></td>
-                            <td><?= $fila['logo'] ?></td>
+                            <td><?= $fila['fechaIngreso'] ?></td>
+                            <td><?= $fila['tipoEquipo'] ?></td>
+                            <td><?= $fila['modelo'] ?></td>
                             <td><?= $fila['nombreOpcion'] ?></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            <td><?= $fila['costo'] ?></td>
                             <td>
                                 <a href="index.php?p=equipos/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
                                 <a href="pages/equipos/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
