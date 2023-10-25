@@ -1,9 +1,12 @@
 <?php
-    include("database/connection.php");  // Incluye la conexión
-    include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
+include("database/connection.php");  // Incluye la conexión
+include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
 
-    $query = "SELECT * FROM marcas";
-    $result = mysqli_query($connection, $query);
+$query = "SELECT marcas.*, personalize.opcion AS nombreOpcion
+FROM marcas
+LEFT JOIN personalize ON marcas.origen = personalize.id;
+";
+$result = mysqli_query($connection, $query);
 ?>
 
 <div class="container-fluid border-bottom border-top bg-body-tertiary">
@@ -14,19 +17,16 @@
 
 <main class="container mt-5">
 
-
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="text-center">
-
-                </div>
+                <div class="text-center"></div>
                 <div>
                     <a class="btn btn-sm btn-primary" href="index.php?p=brands/create" role="button">Agregar nuevo</a>
                 </div>
             </div>
         </div>
-        <div class="card-body table-responsive ">
+        <div class="card-body table-responsive">
             <table class="table table-hover">
                 <thead class="">
                     <tr>
@@ -34,6 +34,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Origen</th>
                         <th scope="col">Logo</th>
+                        <th scope="col">nombreOpcion</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -44,12 +45,12 @@
                             <td><?= $fila['nombre'] ?></td>
                             <td><?= $fila['origen'] ?></td>
                             <td><?= $fila['logo'] ?></td>
+                            <td><?= $fila['nombreOpcion'] ?></td>
                             <td>
                                 <a href="index.php?p=brands/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
                                 <a href="pages/brands/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </td>
                         </tr>
-
                     <?php endwhile; ?>
                 </tbody>
             </table>

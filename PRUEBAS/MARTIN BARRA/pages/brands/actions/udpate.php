@@ -1,7 +1,7 @@
 <?php
     include("../../../database/connection.php");
     
-    $personalize_id = $POST["personalize_id"];
+    $origenName = $POST["origenName"];
     $nombre = $_POST["nombre"];
     $origen= $_POST["origen"];
     $logo = $_POST["logo"];

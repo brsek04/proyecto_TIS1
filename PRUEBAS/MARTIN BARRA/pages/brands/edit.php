@@ -12,6 +12,7 @@
         $origen = $row["origen"];
         $logo = $row["logo"];
         $id = $row["id"];
+        
     } else {
         header("Location: index.php?p=brands/index");
     }
@@ -36,10 +37,19 @@
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label for="origin" class="form-label">Origen</label>
-                        <select class="form-control" id="origin" name="origen">
-                            
-                        </select>
+                        <label for="originName" class="form-label">Origen</label>
+                        <select class="form-control" id="originName" name="origenName">
+                            <option select disabled> seleccionar opcion</option>
+                                <?php
+                                    include("database/connection.php");
+                                    $sql = $connection -> query ("SELECT * FROM personalize");
+                                    while($resultado = $sql -> fetch_assoc()){
+                                        echo "<option value='".$resultado['id']."'>".$resultado['opcion']." ></option>";
+                                    }
+
+
+                                ?>
+                                </select>
                     </div>
 
                     <div class="col-md-12 mb-3">
