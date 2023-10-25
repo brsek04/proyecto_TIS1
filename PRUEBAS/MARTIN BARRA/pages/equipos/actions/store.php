@@ -10,6 +10,6 @@
 
     $result =  mysqli_query($connection, $query);
 
-    header("Location: ../../../index.php?p=brands/index");
+    header("Location: ../../../index.php?p=equipos/index");
 ?>
 

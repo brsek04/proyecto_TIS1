@@ -8,7 +8,7 @@
 
 <div class="container-fluid border-bottom border-top bg-body-tertiary">
     <div class=" p-5 rounded text-center">
-        <h2 class="fw-normal">Origen</h1>
+        <h2 class="fw-normal">tipo equipo</h1>
     </div>
 </div>
 
@@ -30,9 +30,9 @@
             <table class="table table-hover">
                 <thead class="">
                     <tr>
-                        
-                        <th scope="col">Origen</th>
-                       
+                        <th scope="col">#</th>
+                        <th scope="col">tipo equipo</th>
+                        <th scope="col">opciones</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -11,7 +11,7 @@ $result = mysqli_query($connection, $query);
 
 <div class="container-fluid border-bottom border-top bg-body-tertiary">
     <div class=" p-5 rounded text-center">
-        <h2 class="fw-normal">Listado Marcas</h1>
+        <h2 class="fw-normal">Listado Equipos</h1>
     </div>
 </div>
 
@@ -22,7 +22,7 @@ $result = mysqli_query($connection, $query);
             <div class="d-flex justify-content-between align-items-center">
                 <div class="text-center"></div>
                 <div>
-                    <a class="btn btn-sm btn-primary" href="index.php?p=brands/create" role="button">Agregar nuevo</a>
+                    <a class="btn btn-sm btn-primary" href="index.php?p=equipos/create" role="button">Agregar nuevo</a>
                 </div>
             </div>
         </div>
@@ -31,10 +31,15 @@ $result = mysqli_query($connection, $query);
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Origen</th>
-                        <th scope="col">Logo</th>
-                        <th scope="col">nombreOpcion</th>
+                        <th scope="col">fecha ingreso</th>
+                        <th scope="col">idMantenedor1</th>
+                        <th scope="col">modelo</th>
+                        <th scope="col">tipo</th>
+                        <th scope="col">marca</th>
+                        <th scope="col">memoria</th>
+                        <th scope="col">almacenamiento</th>
+                        <th scope="col">tipoA</th>
+                        <th scope="col">costo</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -46,9 +51,14 @@ $result = mysqli_query($connection, $query);
                             <td><?= $fila['origen'] ?></td>
                             <td><?= $fila['logo'] ?></td>
                             <td><?= $fila['nombreOpcion'] ?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
-                                <a href="index.php?p=brands/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
-                                <a href="pages/brands/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                <a href="index.php?p=equipos/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
+                                <a href="pages/equipos/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

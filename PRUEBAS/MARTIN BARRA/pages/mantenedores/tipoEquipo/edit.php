@@ -35,7 +35,7 @@
                     <div class="col-md-12 mb-3">
 
 
-                        <label for="origin" class="form-label">Origen</label>
+                        <label for="origin" class="form-label">tipo equipo</label>
                         <select class="form-control" id="opcion" name="opcion">
                            
                         </select>
