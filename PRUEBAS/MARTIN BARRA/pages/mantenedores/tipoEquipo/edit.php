@@ -13,7 +13,7 @@
        
         $id = $row["id"];
     } else {
-        header("Location: index.php?p=personalize/index");
+        header("Location: index.php?p=mantenedores/tipoEquipo/index");
     }
 ?>
 
@@ -25,7 +25,7 @@
 
 <main class="container mt-5">
     <div class="card">
-        <form action="pages/personalize/actions/update.php" method="POST">
+        <form action="pages/mantenedores/tipoEquipo/actions/update.php" method="POST">
             <div class="card-body">
                 <div class="row">
                     <input type="text" class="d-none" name="id" value="<?php echo $id ?>">

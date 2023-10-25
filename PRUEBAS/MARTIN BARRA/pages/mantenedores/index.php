@@ -1,0 +1,1 @@
+<a href="index.php?p=mantenedores/tipoEquipo/index">tipo Equipo</a>

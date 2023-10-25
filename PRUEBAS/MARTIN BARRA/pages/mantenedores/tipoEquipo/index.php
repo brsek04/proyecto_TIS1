@@ -22,7 +22,7 @@
 
                 </div>
                 <div>              
-                    <a class="btn btn-sm btn-primary" href="index.php?p=personalize/create" role="button">Agregar nuevo</a>
+                    <a class="btn btn-sm btn-primary" href="index.php?p=mantenedores/tipoEquipo/create" role="button">Agregar nuevo</a>
                 </div>
             </div>
         </div>
@@ -46,9 +46,9 @@
 
 
                             
-                                <a href="index.php?p=personalize/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
+                                <a href="index.php?p=mantenedores/tipoEquipo/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
                                 
-                                <a href="pages/personalize/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                <a href="pages/mantenedores/tipoEquipo/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </td>
                         </tr>
 

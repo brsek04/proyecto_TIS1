@@ -1,5 +1,5 @@
 <?php
-     include("../../../database/connection.php");
+     include("../../../../database/connection.php");
 
     $id = $_GET["id"];
 
@@ -7,7 +7,7 @@
 
     $result =  mysqli_query($connection, $query);
 
-    header("Location: ../../../index.php?p=personalize/index");
+    header("Location: ../../../../index.php?p=mantenedores/tipoEquipo/index");
 ?>
 
 

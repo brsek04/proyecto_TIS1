@@ -1,5 +1,5 @@
 <?php
-    include("../../../database/connection.php");
+    include("../../../../database/connection.php");
 
     $opcion = $_POST["opcion"];
     
@@ -12,7 +12,7 @@
 
 
 
-    header("Location: ../../../index.php?p=personalize/index");
+    header("Location: ../../../../index.php?p=mantenedores/tipoEquipo/index");
 ?>
 
 

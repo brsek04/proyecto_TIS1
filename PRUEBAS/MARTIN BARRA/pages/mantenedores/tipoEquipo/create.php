@@ -10,7 +10,7 @@
 
 <main class="container mt-5">
     <div class="card">
-        <form action="pages/personalize/actions/store.php" method="POST">
+        <form action="pages/mantenedores/tipoEquipo/actions/store.php" method="POST">
             <div class="card-body">
                 <div class="row">
                 
