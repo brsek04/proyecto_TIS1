@@ -3,7 +3,7 @@
 
     $id = $_GET["id"];
 
-    $query = "DELETE FROM marcas WHERE id=".$id.";";
+    $query = "DELETE FROM equipos WHERE id=".$id.";";
 
     $result =  mysqli_query($connection, $query);
 
