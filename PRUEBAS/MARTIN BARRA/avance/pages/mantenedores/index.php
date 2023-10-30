@@ -9,8 +9,13 @@
 <br>
 <a href="index.php?p=mantenedores/tipoAlmacenamientos/index">Tipo almacenamiento</a>
 <br>
-<a href="index.php?p=mantenedores/nombreDepartamento/index">Departamento</a>
+-----------
+<a href="index.php?p=mantenedores/funcionarios/index">Funcionarios</a>
+-----
+<br>
+
+<a href="index.php?p=mantenedores/departamentos/index">Departamento</a>
 <br>
 
 
-<a href="index.php?p=mantenedores/tipoEstablecimiento/index">Establecimiento</a>
+<a href="index.php?p=mantenedores/establecimientos/index">Establecimiento</a>

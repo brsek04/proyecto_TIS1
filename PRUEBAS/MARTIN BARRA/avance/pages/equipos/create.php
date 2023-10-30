@@ -20,7 +20,25 @@
                     </div>
 
 
-        
+                    <div class="col-md-12 mb-3">
+                        <label for="funcionario" class="form-label">funcionarios</label>
+                        <select class="form-control" id="funcionario" name="funcionario">
+                            <option select disabled> Seleccionar opcion</option>
+                                <?php
+                                    include("database/connection.php");
+                                    $sql = $connection -> query ("SELECT  * FROM funcionarios");
+                                    while($resultado = $sql -> fetch_assoc()){
+                                        echo "<option value='".$resultado['id']."'>".$resultado['nombre']." </option>";
+                                    }
+
+
+                                ?>
+                                </select>
+                       
+                    </div>
+
+
+
                 
 
 

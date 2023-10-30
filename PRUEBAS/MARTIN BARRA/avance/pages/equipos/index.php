@@ -2,8 +2,9 @@
 include("database/connection.php");  // Incluye la conexión
 include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
 
-$query = "SELECT equipos.*, tipo.tipo AS nombreOpcion, marcas.marca AS marcas, memorias.memoria AS memorias, almacenamientos.almacenamiento AS almacenamientos, tipoAlmacenamientos.tipoAlmacenamiento AS tipoAlmacenamientos
+$query = "SELECT equipos.*, funcionarios.nombre AS funcionario, tipo.tipo AS nombreOpcion, marcas.marca AS marcas, memorias.memoria AS memorias, almacenamientos.almacenamiento AS almacenamientos, tipoAlmacenamientos.tipoAlmacenamiento AS tipoAlmacenamientos 
 FROM equipos
+LEFT JOIN funcionarios ON equipos.funcionario_id = funcionarios.id
 LEFT JOIN tipo ON equipos.tipo_id = tipo.id
 LEFT JOIN marcas ON equipos.marca_id = marcas.id
 LEFT JOIN memorias ON equipos.memoria_id = memorias.id
@@ -36,6 +37,7 @@ $result = mysqli_query($connection, $query);
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Fecha ingreso</th>
+                        <th scope="col">Funcionario</th>
                         <!--<th scope="col">idmantenedor</th>-->
                         <th scope="col">Modelo</th>
                         <th scope="col">Tipo</th>
@@ -52,6 +54,7 @@ $result = mysqli_query($connection, $query);
                         <tr>
                             <th scope="row"><?= $fila['id'] ?></th>
                             <td><?= $fila['fechaIngreso'] ?></td>
+                            <td><?=$fila['funcionario'] ?></td>
                             <!-- Aqui iba el tipo equipo que esta en el sticky notes-->
                             <td><?= $fila['modelo'] ?></td>
                             <td><?=$fila['nombreOpcion'] ?></td>
