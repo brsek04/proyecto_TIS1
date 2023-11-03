@@ -6,3 +6,7 @@
 .b{
     background-color: blue !important;
 }
+
+*{
+    background-color: red;
+}
