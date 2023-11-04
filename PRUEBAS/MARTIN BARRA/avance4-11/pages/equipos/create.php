@@ -137,16 +137,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
                        
                     </div>           
 
@@ -162,6 +152,10 @@
                         <input type="text" class="form-control" id="costo" name="costo" placeholder="Costo en pesos chilenos">
                     </div>
 
+                    
+  
+
+
 
 
 
@@ -169,9 +163,11 @@
             </div>
 
             <div class="card-footer text-body-secondary text-end ">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary" >Guardar</button>
             </div>
-        </form>
+                                  
+
+      
         <br>
         <br>
         <br>
@@ -182,3 +178,5 @@
     </div>
 
 </main>
+
+

@@ -2,13 +2,17 @@
     include("database/connection.php");  // Incluye la conexión
     include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
 
-    $query = "SELECT * FROM establecimientos";
+    $query = "SELECT * FROM regiones";
     $result = mysqli_query($connection, $query);
 ?>
 
+
+
+
+
 <div class="container-fluid border-bottom border-top bg-body-tertiary">
     <div class=" p-5 rounded text-center">
-        <h2 class="fw-normal">Establecimientos</h1>
+        <h2 class="fw-normal">Tipos de equipos</h1>
     </div>
 </div>
 
@@ -22,7 +26,7 @@
 
                 </div>
                 <div>              
-                    <a class="btn btn-sm btn-primary" href="index.php?p=mantenedores/establecimientos/create" role="button">Agregar nuevo</a>
+                    <a class="btn btn-sm btn-primary" href="index.php?p=mantenedores/regiones/create" role="button">Agregar nuevo</a>
                 </div>
             </div>
         </div>
@@ -31,7 +35,7 @@
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Establecimientos</th>
+                        <th scope="col">Tipos</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -40,15 +44,15 @@
                         <tr>
                             <th scope="row"><?= $fila['id'] ?></th>
                             
-                            <td><?= $fila['establecimiento'] ?></td>
+                            <td><?= $fila['region'] ?></td>
                           
                             <td>
 
 
                             
-                                <a href="index.php?p=mantenedores/establecimientos/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
-                                
-                                <a href="pages/mantenedores/establecimientos/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                <a href="index.php?p=mantenedores/regiones/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
+                                <!-- la alerta-->
+                                <a href="javascript:borrar(<?= $fila['id'] ?>);" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </td>
                         </tr>
 
@@ -58,3 +62,22 @@
         </div>
     </div>
 </main>
+
+ <!-- script alerta borrar-->
+<script>
+    function borrar (id){
+        Swal.fire({
+            title: '¿Seguro que deseas borrar?',
+            showCancelButton: true,
+            confirmButtonText: 'Si, borrar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location="pages/mantenedores/regiones/actions/delete.php?id="+id;
+   
+  }
+});
+    }
+    </script>
+
+
+

@@ -17,3 +17,7 @@
 
 
 <a href="index.php?p=mantenedores/establecimientos/index">Establecimiento</a>
+<br>
+<a href="index.php?p=mantenedores/comunas/index">Comunas</a>
+<br>
+<a href="index.php?p=mantenedores/regiones/index">Regiones</a>

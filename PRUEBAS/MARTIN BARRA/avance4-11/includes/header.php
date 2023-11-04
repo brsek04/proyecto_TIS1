@@ -47,6 +47,12 @@ $(document).ready(function(){
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+<!-- envio de emails -->
+	
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+</script>
 
 
 

@@ -84,7 +84,14 @@ $result = mysqli_query($connection, $query);
 <a class="btn btn-sm btn-primary" href="index.php?p=equipos/historial" role="button">historial de cambios de equipo</a>
 <br>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+a
 
 
 
@@ -103,6 +110,9 @@ $result = mysqli_query($connection, $query);
 });
     }
     </script>
+
+
+
 
 
 

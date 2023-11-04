@@ -24,6 +24,24 @@
                     
 
                 </div>
+
+
+                <div class="col-md-12 mb-3">
+                        <label for="comuna" class="form-label">comuna</label>
+                        <select class="form-control" id="comuna" name="comuna">
+                            <option select disabled> Seleccione una opcion</option>
+                                <?php
+                                    include("database/connection.php");
+                                    $sql = $connection -> query ("SELECT * FROM comunas");
+                                    while($resultado = $sql -> fetch_assoc()){
+                                        echo "<option value='".$resultado['id']."'>".$resultado['comuna']." </option>";
+                                    }
+
+
+                                ?>
+                                </select>
+
+                    </div>
             </div>
 
             <div class="card-footer text-body-secondary text-end">
