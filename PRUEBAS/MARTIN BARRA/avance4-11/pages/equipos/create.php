@@ -14,10 +14,11 @@
             <div class="card-body">
                 <div class="row">
                 
-                    <div class="col-md-12 mb-3">
-                        <label for="fechaIngreso" class="form-label">Fecha de ingreso</label>
-                        <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" >
-                    </div>
+                <div class="col-md-12 mb-3">
+                    <label for="fechaIngreso" class="form-label">Fecha de ingreso</label>
+                    <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" >
+                </div>
+
 
 
                     <div class="col-md-12 mb-3">
@@ -149,7 +150,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="costo" class="form-label">Costo</label>
-                        <input type="text" class="form-control" id="costo" name="costo" placeholder="Costo en pesos chilenos">
+                        <input type="number" class="form-control" id="costo" name="costo" placeholder="Costo en pesos chilenos">
                     </div>
 
                     
