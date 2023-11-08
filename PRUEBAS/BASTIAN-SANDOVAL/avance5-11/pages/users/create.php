@@ -2,7 +2,7 @@
     include("database/auth.php");
 ?>
 
-
+<main class="container mt-5">
 <div class="d-flex" id="wrapper">
         <div class="bg-white" id="sidebar-wrapper">
            <li class="nav-item row align-items-start">
@@ -56,7 +56,7 @@
                 </div>
             </nav>
 
-<main class="container mt-5">
+
     <div class="card">
         <form action="pages/users/actions/store.php" method="POST">
             <div class="card-body">

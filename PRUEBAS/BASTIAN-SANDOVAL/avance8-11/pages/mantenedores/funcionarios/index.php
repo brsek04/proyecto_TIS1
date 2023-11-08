@@ -1,20 +1,14 @@
 <?php
-    include("database/connection.php");
-    include("database/auth.php");
+    include("database/connection.php");  // Incluye la conexión
+    include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
 
-    $id = $_GET["id"];
+    $query = "SELECT funcionarios.*, establecimientos.establecimiento AS establecimiento, departamentos.departamento AS departamento
+    FROM funcionarios
+    LEFT JOIN establecimientos ON funcionarios.establecimiento_id = establecimientos.id
+    LEFT JOIN departamentos ON funcionarios.departamento_id = departamentos.id;
+    ";
 
-    $query = "SELECT * FROM marcas WHERE id=" . $id . ";";
-    $result =  mysqli_query($connection, $query);
-
-    if ($row = mysqli_fetch_assoc($result)) {
-       
-        $opcion = $row["opcion"];
-       
-        $id = $row["id"];
-    } else {
-        header("Location: index.php?p=mantenedores/marcas/index");
-    }
+    $result = mysqli_query($connection, $query);
 ?>
 
 <main class="container mt-5">
@@ -45,7 +39,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Edición de Funcionarios</h2>
+                    <h2 class="fs-2 m-0">Funcionarios</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -73,31 +67,63 @@
 
 
 <main class="container mt-5">
+
+
     <div class="card">
-        <form action="pages/mantenedores/marcas/actions/update.php" method="POST">
-            <div class="card-body">
-                <div class="row">
-                    <input type="text" class="d-none" name="id" value="<?php echo $id ?>">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center">
 
-                   
-
-                    <div class="col-md-12 mb-3">
-
-
-                        <label for="origin" class="form-label">marcas equipo</label>
-                        <select class="form-control" id="opcion" name="opcion">
-                           
-                        </select>
-                    </div>
-
-                    
+                </div>
+                <div>              
+                    <a class="btn btn-sm btn-primary" href="index.php?p=mantenedores/funcionarios/create" role="button">Agregar nuevo</a>
                 </div>
             </div>
+        </div>
+        <div class="card-body table-responsive ">
+            <table class="table table-hover">
+                <thead class="">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo electronico</th>
+                        <th scope="col">Establecimiento</th>
+                        <th scope="col">Departamento</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($fila = mysqli_fetch_array($result)) : ?>
+                        <tr>
+                            <th scope="row"><?= $fila['id'] ?></th>
+                            
+                            <td><?= $fila['nombre'] ?></td>
+                            <td><?= $fila['apellido'] ?></td>
+                            <td><?= $fila['email'] ?></td>
+                            <td><?= $fila['establecimiento'] ?></td>
+                            <td><?= $fila['departamento'] ?></td>
+                            <td>
 
-            <div class="card-footer text-body-secondary text-end">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
+
+                            
+                                <a href="index.php?p=mantenedores/funcionarios/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
+                                
+                                <a href="pages/mantenedores/funcionarios/actions/delete.php?id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            </td>
+                        </tr>
+
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
     </div>
-
 </main>

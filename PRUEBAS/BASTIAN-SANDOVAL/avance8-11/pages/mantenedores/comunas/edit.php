@@ -1,20 +1,18 @@
 <?php
-    include("database/connection.php");
-    include("database/auth.php");
+include("database/connection.php");
+include("database/auth.php");
 
-    $id = $_GET["id"];
+$id = $_GET["id"];
 
-    $query = "SELECT * FROM marcas WHERE id=" . $id . ";";
-    $result =  mysqli_query($connection, $query);
+$query = "SELECT * FROM comunas WHERE id=" . $id . ";";
+$result =  mysqli_query($connection, $query);
 
-    if ($row = mysqli_fetch_assoc($result)) {
-       
-        $opcion = $row["opcion"];
-       
-        $id = $row["id"];
-    } else {
-        header("Location: index.php?p=mantenedores/marcas/index");
-    }
+if ($row = mysqli_fetch_assoc($result)) {
+    $opcion = $row["comuna"];
+    $id = $row["id"];
+} else {
+    header("Location: index.php?p=mantenedores/comunas/index");
+}
 ?>
 
 <main class="container mt-5">
@@ -31,9 +29,9 @@
                         class="fas fa-project-diagram me-2"></i>Equipos</a>
                 <a href="index.php?p=users/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-user me-2"></i>Usuarios</a>
-                <a href="index.php?p=mantenedores/funcionarios/index" class="list-group-item list-group-item-action bg-transparent second-text active fw-bold"><i
+                <a href="index.php?p=mantenedores/funcionarios/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-people-group me-2"></i>Funcionarios</a>
-                <a href="index.php?p=mantenedores/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="index.php?p=mantenedores/index" class="list-group-item list-group-item-action bg-transparent second-text active fw-bold"><i
                         class="fa-solid fa-bars-progress me-2"></i>Productos</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-calendar me-2"></i>Calendario</a>
@@ -45,7 +43,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Edición de Funcionarios</h2>
+                    <h2 class="fs-2 m-0">Edición de Comunas</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -71,33 +69,21 @@
                 </div>
             </nav>
 
-
 <main class="container mt-5">
     <div class="card">
-        <form action="pages/mantenedores/marcas/actions/update.php" method="POST">
+        <form action="pages/mantenedores/comunas/actions/update.php" method="POST">
             <div class="card-body">
                 <div class="row">
                     <input type="text" class="d-none" name="id" value="<?php echo $id ?>">
-
-                   
-
                     <div class="col-md-12 mb-3">
-
-
-                        <label for="origin" class="form-label">marcas equipo</label>
-                        <select class="form-control" id="opcion" name="opcion">
-                           
-                        </select>
+                        <label for="opcion" class="form-label">Nuevo nombre de la Comuna</label>
+                        <input type="text" class="form-control" id="opcion" name="opcion" value="<?php echo $opcion ?>">
                     </div>
-
-                    
                 </div>
             </div>
-
             <div class="card-footer text-body-secondary text-end">
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </form>
     </div>
-
 </main>
