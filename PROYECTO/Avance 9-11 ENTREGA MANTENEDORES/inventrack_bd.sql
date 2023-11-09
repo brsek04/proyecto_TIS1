@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2023 a las 03:21:02
+-- Tiempo de generación: 09-11-2023 a las 14:31:49
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `mm`
+-- Base de datos: `inventrack_bd`
 --
 
 -- --------------------------------------------------------
@@ -109,7 +109,8 @@ INSERT INTO `equipos` (`id`, `fechaIngreso`, `modelo`, `tipo_id`, `marca_id`, `m
 (57, '2023-11-07', 'Ideapad 14lks', 14, 12, 7, 9, 7, 7, 500000),
 (58, '2023-11-07', 'Iphone 12 Mini', 16, 15, 7, 7, 10, 8, 600000),
 (59, '2023-11-07', 'Hp gaming 1507', 13, 14, 7, 10, 8, 9, 700000),
-(60, '2023-11-07', 'Huawei Matepad 15', 15, 13, 7, 8, 10, 10, 250000);
+(60, '2023-11-07', 'Huawei Matepad 15', 15, 13, 7, 8, 10, 10, 250000),
+(61, '2023-11-24', 'Ipad 14', 15, 15, 7, 9, 10, 12, 1000000);
 
 -- --------------------------------------------------------
 
@@ -153,7 +154,8 @@ INSERT INTO `funcionarios` (`id`, `nombre`, `apellido`, `email`, `establecimient
 (7, 'Bruno', 'Figueroa', 'bfigueroau@ing.ucsc.cl', 7, 5),
 (8, 'Patricio', 'Pizarro', 'ppizarrot@ing.ucsc.cl', 7, 7),
 (9, 'Martin ', 'Barra', 'mbarra@ing.ucsc.cl', 7, 4),
-(10, 'Bastian', 'Sandoval', 'bsandoval@ing.ucsc.cl', 7, 6);
+(10, 'Bastian', 'Sandoval', 'bsandoval@ing.ucsc.cl', 7, 6),
+(12, 'Wyroska', 'Covid', 'sr.bastii@gmail.com', 7, 4);
 
 -- --------------------------------------------------------
 
@@ -168,79 +170,6 @@ CREATE TABLE `historialequipos` (
   `equipo_id` int(10) NOT NULL,
   `funcionario_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `historialequipos`
---
-
-INSERT INTO `historialequipos` (`id`, `descripcion`, `trn_date`, `equipo_id`, `funcionario_id`) VALUES
-(2, 'Se agregó el equipo 9', '0000-00-00', 0, 0),
-(3, 'Se agregó el equipo tipoEquipo1 al funcionario 2', '0000-00-00', 0, 0),
-(4, 'Se agregó el equipo tipoEquipo1 al funcionario 2', '0000-00-00', 0, 0),
-(5, 'Se agregó el equipo tipoEquipo1 al funcionario a', '0000-00-00', 0, 0),
-(6, 'Se eliminó el equipo 21', '0000-00-00', 0, 0),
-(7, 'Se eliminó el equipo tipoEquipo1', '0000-00-00', 0, 0),
-(8, 'Se agregó el equipo tipoEquipo2 al funcionario a', '0000-00-00', 0, 0),
-(9, 'Se eliminó el equipo tipoEquipo2', '0000-00-00', 0, 0),
-(10, 'Se eliminó el equipo 24 - tipoEquipo1', '0000-00-00', 0, 0),
-(11, 'Se agregó el equipo 27 tipoEquipo1 al funcionario ', '0000-00-00', 0, 0),
-(12, 'Se agregó el equipo 28 tipoEquipo1 al funcionario ', '0000-00-00', 0, 0),
-(13, 'Se agregó el equipo tipoEquipo1 al funcionario a', '0000-00-00', 0, 0),
-(14, 'Se agregó el equipo tipoEquipo1 al funcionario a', '0000-00-00', 0, 0),
-(15, 'Se agregó el equipo  31 tipoEquipo1 al funcionario', '0000-00-00', 0, 0),
-(16, 'Se agregó el equipo   al funcionario a', '0000-00-00', 0, 0),
-(17, 'Se agregó el equipo  33 al funcionario a', '0000-00-00', 0, 0),
-(18, 'Se agregó el equipo  34 al funcionario a', '0000-00-00', 34, 2),
-(19, 'Se eliminó el equipo 27 - tipoEquipo1', '0000-00-00', 0, 0),
-(20, 'Se eliminó el equipo 25 - tipoEquipo1', '0000-00-00', 0, 0),
-(21, 'Se eliminó el equipo 28 - tipoEquipo1', '0000-00-00', 0, 0),
-(22, 'Se eliminó el equipo 29 - tipoEquipo1', '0000-00-00', 0, 0),
-(23, 'Se eliminó el equipo 30 - tipoEquipo1', '0000-00-00', 0, 0),
-(24, 'Se eliminó el equipo 31 - tipoEquipo1', '0000-00-00', 0, 0),
-(25, 'Se agregó el equipo  35 al funcionario marion', '0000-00-00', 35, 4),
-(26, 'Se eliminó el equipo 32 - tipoEquipo1', '0000-00-00', 0, 0),
-(27, 'Se eliminó el equipo 35 - tipoEquipo1', '0000-00-00', 35, 4),
-(28, 'Se agregó el equipo 36 al funcionario a', '2023-11-03', 36, 2),
-(29, 'Se eliminó el equipo 33 - tipoEquipo1111', '0000-00-00', 33, 2),
-(30, 'Se agregó el equipo 37 al funcionario a', '2023-11-03', 37, 2),
-(31, 'Se agregó el equipo 38 al funcionario a', '2023-11-03', 38, 2),
-(32, 'Se eliminó el equipo 38 - tipoEquipo2', '0000-00-00', 38, 2),
-(33, 'Se agregó el equipo 39 al funcionario a', '2023-11-03', 39, 2),
-(34, 'Se agregó el equipo 40 al funcionario a', '2023-11-03', 40, 2),
-(35, 'Se agregó el equipo 41 al funcionario a', '2023-11-03', 41, 2),
-(36, 'Se eliminó el equipo 41 - tipoEquipo2', '2023-11-03', 41, 2),
-(37, 'Se agregó el equipo 42 al funcionario a', '2023-11-04', 42, 2),
-(38, 'Se agregó el equipo 43 al funcionario a', '2023-11-04', 43, 2),
-(39, 'Se agregó el equipo 44 al funcionario marion', '2023-11-04', 44, 4),
-(40, 'Se eliminó el equipo 44 - tipoEquipo2', '2023-11-04', 44, 4),
-(41, 'Se agregó el equipo 45 al funcionario martin', '2023-11-04', 45, 5),
-(42, 'Se agregó el equipo 46 al funcionario martin', '2023-11-04', 46, 5),
-(43, 'Se agregó el equipo 47 al funcionario martin', '2023-11-04', 47, 5),
-(44, 'Se agregó el equipo 48 al funcionario martin', '2023-11-04', 48, 5),
-(45, 'Se agregó el equipo 49 al funcionario martin', '2023-11-04', 49, 5),
-(46, 'Se agregó el equipo 50 al funcionario martin', '2023-11-04', 50, 5),
-(47, 'Se agregó el equipo 51 al funcionario martin', '2023-11-04', 51, 5),
-(48, 'Se agregó el equipo 52 al funcionario martin', '2023-11-04', 52, 5),
-(49, 'Se agregó el equipo 53 al funcionario martin', '2023-11-04', 53, 5),
-(50, 'Se agregó el equipo 54 al funcionario martin', '2023-11-04', 54, 5),
-(51, 'Se agregó el equipo 55 al funcionario martin', '2023-11-04', 55, 5),
-(52, 'Se agregó el equipo 56 al funcionario martin', '2023-11-04', 56, 5),
-(53, 'Se eliminó el equipo 45 - tipoEquipo222222', '2023-11-07', 45, 5),
-(54, 'Se eliminó el equipo 46 - tipoEquipo222222', '2023-11-07', 46, 5),
-(55, 'Se eliminó el equipo 47 - tipoEquipo222222', '2023-11-07', 47, 6),
-(56, 'Se eliminó el equipo 48 - tipoEquipo222222', '2023-11-07', 48, 5),
-(57, 'Se eliminó el equipo 49 - tipoEquipo222222', '2023-11-07', 49, 5),
-(58, 'Se eliminó el equipo 50 - tipoEquipo222222', '2023-11-07', 50, 5),
-(59, 'Se eliminó el equipo 51 - tipoEquipo222222', '2023-11-07', 51, 5),
-(60, 'Se eliminó el equipo 52 - tipoEquipo222222', '2023-11-07', 52, 5),
-(61, 'Se eliminó el equipo 53 - tipoEquipo222222', '2023-11-07', 53, 5),
-(62, 'Se eliminó el equipo 54 - tipoEquipo222222', '2023-11-07', 54, 5),
-(63, 'Se eliminó el equipo 55 - tipoEquipo222222', '2023-11-07', 55, 5),
-(64, 'Se eliminó el equipo 56 - tipoEquipo222222', '2023-11-07', 56, 5),
-(65, 'Se agregó el equipo 57 al funcionario Bruno', '2023-11-07', 57, 7),
-(66, 'Se agregó el equipo 58 al funcionario Patricio', '2023-11-07', 58, 8),
-(67, 'Se agregó el equipo 59 al funcionario Martin ', '2023-11-07', 59, 9),
-(68, 'Se agregó el equipo 60 al funcionario Bastian', '2023-11-07', 60, 10);
 
 -- --------------------------------------------------------
 
@@ -362,7 +291,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `trn_date`) VALUES
-(3, 'pato', '9cdfb439c7876e703e307864c9167a15', 'patungas@gmail.com', '2023-11-07');
+(5, 'admin', '9cdfb439c7876e703e307864c9167a15', 'admin@gmail.com', '2023-11-09');
 
 --
 -- Índices para tablas volcadas
@@ -482,7 +411,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `establecimientos`
@@ -494,13 +423,13 @@ ALTER TABLE `establecimientos`
 -- AUTO_INCREMENT de la tabla `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `historialequipos`
 --
 ALTER TABLE `historialequipos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
@@ -536,7 +465,7 @@ ALTER TABLE `tipoalmacenamientos`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
