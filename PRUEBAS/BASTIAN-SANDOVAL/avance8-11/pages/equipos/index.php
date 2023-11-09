@@ -68,6 +68,7 @@ $result = mysqli_query($connection, $query);
                     </ul>
                 </div>
             </nav>
+            
 <main class="container mt-5">
 
     <div class="card">
