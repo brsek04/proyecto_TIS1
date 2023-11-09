@@ -36,7 +36,7 @@ LEFT JOIN regiones ON comunas.region_id = regiones.id;
                 <a href="index.php?p=mantenedores/funcionarios/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-people-group me-2"></i>Funcionarios</a>
                 <a href="index.php?p=mantenedores/index" class="list-group-item list-group-item-action bg-transparent second-text active fw-bold"><i
-                        class="fa-solid fa-bars-progress me-2"></i>Productos</a>
+                        class="fa-solid fa-bars-progress me-2"></i>Mantenedores</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-calendar me-2"></i>Calendario</a>
                 <a href="pages/auth/actions/logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i

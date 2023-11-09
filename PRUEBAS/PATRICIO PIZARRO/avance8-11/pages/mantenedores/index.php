@@ -15,7 +15,7 @@
                 <a href="index.php?p=mantenedores/funcionarios/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-people-group me-2"></i>Funcionarios</a>
                 <a href="index.php?p=mantenedores/index" class="list-group-item list-group-item-action bg-transparent second-text active fw-bold"><i
-                        class="fa-solid fa-bars-progress me-2"></i>Productos</a>
+                        class="fa-solid fa-bars-progress me-2"></i>Mantenedores</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-calendar me-2"></i>Calendario</a>
                 <a href="pages/auth/actions/logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
@@ -52,28 +52,19 @@
                 </div>
             </nav>
 
-
-
-<a href="index.php?p=mantenedores/tipoEquipo/index">Tipo equipo</a>
-<br>
-
-<a href="index.php?p=mantenedores/marcas/index">Marcas</a>
-<br>
-<a href="index.php?p=mantenedores/memorias/index">Memoria</a>
-<br>
-<a href="index.php?p=mantenedores/almacenamientos/index">Almacenamiento</a>
-<br>
-<a href="index.php?p=mantenedores/tipoAlmacenamientos/index">Tipo almacenamiento</a>
-<br>
-
-<!-- <a href="index.php?p=mantenedores/funcionarios/index">Funcionarios</a> -->
-
-<a href="index.php?p=mantenedores/departamentos/index">Departamento</a>
-<br>
-
-
-<a href="index.php?p=mantenedores/establecimientos/index">Establecimiento</a>
-<br>
-<a href="index.php?p=mantenedores/comunas/index">Comunas</a>
-<br>
-<a href="index.php?p=mantenedores/regiones/index">Regiones</a>
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Tipos de Mantenedores Actuales
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/tipoEquipo/index">Tipo equipo</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/marcas/index">Marcas</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/memorias/index">Memoria</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/almacenamientos/index">Almacenamiento</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/tipoAlmacenamientos/index">Tipo almacenamiento</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/departamentos/index">Departamento</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/establecimientos/index">Establecimiento</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/comunas/index">Comunas</a></li>
+    <li><a class="dropdown-item" href="index.php?p=mantenedores/regiones/index">Regiones</a></li>
+  </ul>
+</div>
