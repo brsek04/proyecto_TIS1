@@ -206,7 +206,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="costo" class="form-label">Costo</label>
-                        <input type="text" class="form-control" id="costo" name="costo" placeholder="Costo en pesos chilenos">
+                        <input type="number" class="form-control" id="costo" name="costo" placeholder="Costo en pesos chilenos">
                     </div>
 
 
