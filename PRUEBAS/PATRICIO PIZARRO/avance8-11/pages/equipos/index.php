@@ -115,7 +115,29 @@ $result = mysqli_query($connection, $query);
                             <td>
                                 <a href="index.php?p=equipos/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
                                 <a href="javascript:borrar(<?= $fila['id'] ?>);" class="btn btn-sm btn-outline-danger">Eliminar</a>
-                                <a href="index.php?p=equipos/busquedaQR&id=<?= $fila['id'] ?>">QR</a>
+                                
+
+
+                                <form action="" id="formulario" class="formulario">
+                                <input type="text" id="link" value="http://localhost/xampp/proyecto_TIS1/PRUEBAS/PATRICIO%20PIZARRO/avance8-11/index.php?p=equipos/busquedaQR&id=<?= $fila['id'] ?>" /> <!-- Valor predeterminado -->
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Generar QR</button>
+
+			                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+				                    aria-hidden="true">
+			                    	<div class="modal-dialog">
+				                    	<div class="modal-content">
+					                    	<div class="modal-header">
+						                    	<h1 class=" modal-title fs-5 text-center" id="exampleModalLabel">Qr para dispositivo
+							                    </h1>
+							                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						                    </div>
+						                    <div class="modal-body">
+
+                                                <div class=" contenedor ">
+                                                    <div id="contenedorQR" class="contenedorQR"></div>
+                                                </div>
+                                            </div>
+                                            
                             </td>
                         </tr>
                     <?php endwhile; ?>
