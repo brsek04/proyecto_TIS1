@@ -25,6 +25,8 @@ LEFT JOIN tipoAlmacenamientos ON equipos.tipoAlmacenamiento_id = tipoAlmacenamie
 $result = mysqli_query($connection, $query);
 ?>
 
+
+
 <main class="container mt-5">
     <div class="d-flex" id="wrapper">
         <div class="bg-white" id="sidebar-wrapper">
@@ -139,6 +141,7 @@ $result = mysqli_query($connection, $query);
                                 <a href="index.php?p=equipos/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
                                 <a href="javascript:borrar(<?= $fila['id'] ?>);" class="btn btn-sm btn-outline-danger">Eliminar</a>
                                 <a href="index.php?p=equipos/busquedaQR&id=<?= $fila['id'] ?>">QR</a>
+                                <a href="index.php?p=equipos/reporteID&id=<?= $fila['id'] ?>">pdf</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -148,22 +151,18 @@ $result = mysqli_query($connection, $query);
     </div>
 </main>
 
-<button id="download">descargar pdf </button>
 
-<script>
-    document.getElementById('download').addEventListener('click', function () {
-        // Agregar un parámetro a la URL para indicar la descarga del PDF
-        window.location.href = 'index.php?p=equipos/index&download_pdf=true';
-    });
-</script>
 
 
 
 <a class="btn btn-sm btn-primary" href="index.php?p=equipos/historial" role="button">historial de cambios de equipo</a>
 <br>
 
-<a class="btn btn-sm btn-primary" href="index.php?p=equipos/aaaa" role="button">graficos</a>
+<!-- <a class="btn btn-sm btn-primary" href="index.php?p=equipos/aaaa" role="button">graficos</a>
 <br>
+                    -->
+
+<a href="pages/equipos/reporte.php" class="btn btn-success" target="_blank"> generar reporte </a>
 
 <br>
 <br>
@@ -191,22 +190,3 @@ $result = mysqli_query($connection, $query);
     </script>
 
 
-<?php
-    if (isset($_GET['download_pdf'])) {
-    require 'TCPDF-main/TCPDF-main/tcpdf.php';
-    
-    $pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', true);
-
-    $pdf->SetTitle('Equipos');
-    $pdf->AddPage();
-    $pdf->SetFont('helvetica','',24);
-    $pdf->writeHTML('
-        <h1>hola</h1>
-    ');
-
-    ob_end_clean(); 
-    $pdf->OutPut('tablaEquipos.pdf', 'D');
-                        exit;
-    }
-
-?>
