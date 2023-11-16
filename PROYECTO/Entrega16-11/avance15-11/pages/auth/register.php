@@ -73,4 +73,17 @@ if (isset($_POST['submit'])) {
 
 
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("email").addEventListener("input", function () {
+            var emailInput = this.value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+            if (!emailRegex.test(emailInput)) {
+                this.setCustomValidity("El email no es válido.");
+            } else {
+                this.setCustomValidity("");
+            }
+        });
+    });
+</script>
