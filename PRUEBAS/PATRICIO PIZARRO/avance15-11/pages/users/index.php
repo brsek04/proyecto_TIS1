@@ -11,11 +11,10 @@
 
 ?>
 
-<main class="container mt-5">
     <div class="d-flex" id="wrapper">
         <div class="bg-white" id="sidebar-wrapper">
            <li class="nav-item row align-items-start">
-                        <a class="nav-link <?php echo ($pagina == 'home') ? 'active' : null ?>" aria-current="page" href="index.php?p=home"><img class="p-0 m-1" src="logo-inventrack.png" alt="" width="240"></a>
+                        <a class="nav-link <?php echo ($pagina == 'home') ? 'active' : null ?>" aria-current="page" href="index.php?p=home"><img class="p-0 m-3" src="logo-inventrack.png" alt="" width="240"></a>
                     </li>
 
             <div class="list-group list-group-flush my-3">
@@ -76,7 +75,7 @@
 
                 </div>
                 <div>
-                    <a class="btn btn-sm btn-primary" href="index.php?p=users/create" role="button">Agregar nuevo</a>
+                    <a class="btn btn-sm btn-success" href="index.php?p=users/create" role="button">Agregar nuevo</a>
                 </div>
             </div>
         </div>
