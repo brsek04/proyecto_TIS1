@@ -52,24 +52,7 @@
         <input class="form-check-input" type="checkbox" id="marcaCheckbox" name="marcaCheckbox">
     </div>
 </div>
-<div class="col-md-12 mb-3">
-    <label class="form-check-label">Memoria</label>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="memoriaCheckbox" name="memoriaCheckbox">
-    </div>
-</div>
-<div class="col-md-12 mb-3">
-    <label class="form-check-label">Almacenamiento</label>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="almacenamientoCheckbox" name="almacenamientoCheckbox">
-    </div>
-</div>
-<div class="col-md-12 mb-3">
-    <label class="form-check-label">Tipo Almacenamieto</label>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="tipoAlmacenamientoCheckbox" name="tipoAlmacenamientoCheckbox">
-    </div>
-</div>
+
 
 
 <div class="col-md-12 mb-3">
