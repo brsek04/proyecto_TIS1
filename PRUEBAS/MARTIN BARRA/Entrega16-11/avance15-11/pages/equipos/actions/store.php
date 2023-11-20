@@ -45,7 +45,8 @@ if ($resultTipoEquipo) {
             $result2 = mysqli_query($connection, $query2);
 
             if ($result2) {
-                
+                $descripcion2 = "Estimado $nombreFuncionario se le ha asignado el equipo #$idEquipo ";
+
 
                 $queryFuncionarioCorreo = "SELECT email FROM funcionarios WHERE id = $funcionario";
                 $resultFuncionarioCorreo = mysqli_query($connection, $queryFuncionarioCorreo);
@@ -58,7 +59,7 @@ if ($resultTipoEquipo) {
                     echo '<input type="hidden" id="to" value="' . $correoFuncionario . '">';
                     echo '<input type="hidden" id="subject" value="Asignación de equipo">';
                     echo '<input type="hidden" id="replyto" value="">';
-                    echo '<input type="hidden" id="message" value="' . $descripcion . '">';
+                    echo '<input type="hidden" id="message" value="' . $descripcion2 . '">';
                 } else {
                     
                     echo "Error al obtener el correo del funcionario: " . mysqli_error($connection);

@@ -68,8 +68,9 @@
 
                     <div class="col-md-12 mb-3">
                         <label for="funcionario" class="form-label">Funcionario a cargo</label>
+                       
                         <select class="form-control" id="funcionario" name="funcionario">
-                            <option select disabled> Seleccione una opcion</option>
+                            <option disabled selected> Seleccione una opcion</option>
                                 <?php
                                     include("database/connection.php");
                                     $sql = $connection -> query ("SELECT  * FROM funcionarios");
@@ -91,7 +92,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="tipoEquipo" class="form-label">Tipo</label>
                         <select class="form-control" id="tipoEquipo" name="tipoEquipo">
-                            <option select disabled> Seleccione una opcion</option>
+                            <option disabled selected> Seleccione una opcion</option>
                                 <?php
                                     include("database/connection.php");
                                     $sql = $connection -> query ("SELECT * FROM tipo");
@@ -108,7 +109,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="marcas" class="form-label">Marca</label>
                         <select class="form-control" id="marcas" name="marcas">
-                            <option select disabled> Seleccione una opcion</option>
+                            <option disabled selected> Seleccione una opcion</option>
                                 <?php
                                     include("database/connection.php");
                                     $sql = $connection -> query ("SELECT * FROM marcas");
@@ -127,7 +128,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="memorias" class="form-label">Memoria</label>
                         <select class="form-control" id="memorias" name="memorias">
-                            <option select disabled> Seleccione una opcion</option>
+                            <option disabled selected> Seleccione una opcion</option>
                                 <?php
                                     include("database/connection.php");
                                     $sql = $connection -> query ("SELECT * FROM memorias");
@@ -145,7 +146,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="almacenamientos" class="form-label">Almacenamiento</label>
                         <select class="form-control" id="almacenamientos" name="almacenamientos">
-                            <option select disabled> Seleccione una opcion</option>
+                            <option disabled selected> Seleccione una opcion</option>
                                 <?php
                                     include("database/connection.php");
                                     $sql = $connection -> query ("SELECT * FROM almacenamientos");
@@ -165,7 +166,7 @@
                     <div class="col-md-12 mb-3">
                         <label for="tipoAlmacenamientos" class="form-label">Tipo de almacenamiento</label>
                         <select class="form-control" id="tipoAlmacenamientos" name="tipoAlmacenamientos">
-                            <option select disabled> Seleccione una opcion</option>
+                            <option disabled selected> Seleccione una opcion</option>
                                 <?php
                                     include("database/connection.php");
                                     $sql = $connection -> query ("SELECT * FROM tipoAlmacenamientos");

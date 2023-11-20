@@ -52,8 +52,37 @@ foreach($queryPolarAreaTipo as $data)
   $cantidadTipo[] = $data['cantidad'];
 }
 
+$queryHorizontalBar = $connection->query("
+  SELECT 
+    f.nombre as funcionario,
+    SUM(e.costo) as total_cost
+  FROM equipos e
+  JOIN funcionarios f ON e.funcionario_id = f.id
+  GROUP BY f.nombre
+");
+
+foreach($queryHorizontalBar as $data)
+{
+  $funcionarios[] = $data['funcionario'];
+  $totalCostFuncionario[] = $data['total_cost'];
+}
+
+// Función para generar una paleta de colores única
+function generarPaletaColores($cantidad)
+{
+  $colores = [];
+  for ($i = 0; $i < $cantidad; $i++) {
+    // Genera colores aleatorios en formato rgba
+    $colores[] = 'rgba(' . rand(0, 255) . ',' . rand(0, 255) . ',' . rand(0, 255) . ', 0.2)';
+  }
+  return $colores;
+}
+
+// Obtener una paleta de colores única para cada barra
+$coloresBarras = generarPaletaColores(count($funcionarios));
+
 ?>
-<div style="width: 700px; float: left;">
+<div style="width: 500px; float: left;">
   <canvas id="myChart"></canvas>
 </div>
 
@@ -65,6 +94,9 @@ foreach($queryPolarAreaTipo as $data)
   <canvas id="myDoughnutChartTipo"></canvas>
 </div>
 
+<div style="width: 500px; float: left;">
+  <canvas id="myHorizontalBarChart"></canvas>
+</div>
 
 <script>
   // Configuración para el gráfico de barras
@@ -74,7 +106,7 @@ foreach($queryPolarAreaTipo as $data)
     datasets: [{
       label: 'Costos por mes',
       data: <?php echo json_encode($totalCost) ?>,
-      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      backgroundColor: <?php echo json_encode($coloresBarras) ?>,
       borderColor: 'rgb(75, 192, 192)',
       borderWidth: 1
     }]
@@ -216,6 +248,38 @@ const configDoughnutTipo = {
 var myDoughnutChartTipo = new Chart(
   document.getElementById('myDoughnutChartTipo'),
   configDoughnutTipo
+);
+
+
+// Configuración para el gráfico de barras horizontales
+const labelsHorizontalBar = <?php echo json_encode($funcionarios) ?>;
+const dataHorizontalBar = {
+  labels: labelsHorizontalBar,
+  datasets: [{
+    label: 'Costo por funcionario',
+    data: <?php echo json_encode($totalCostFuncionario) ?>,
+    backgroundColor: <?php echo json_encode($coloresBarras) ?>, // Utiliza los colores generados
+    borderColor: 'rgb(75, 192, 192)',
+    borderWidth: 1
+  }]
+};
+
+const configHorizontalBar = {
+  type: 'bar',
+  data: dataHorizontalBar,
+  options: {
+    indexAxis: 'y',
+    scales: {
+      x: {
+        beginAtZero: true
+      }
+    }
+  }
+};
+
+var myHorizontalBarChart = new Chart(
+  document.getElementById('myHorizontalBarChart'),
+  configHorizontalBar
 );
 
 </script>
