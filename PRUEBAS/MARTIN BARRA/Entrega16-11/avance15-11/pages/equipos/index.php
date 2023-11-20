@@ -184,7 +184,7 @@ $result = mysqli_query($connection, $query);
 
     <br>
 
- <a class="btn btn-sm btn-primary" href="index.php?p=equipos/aaaa" role="button">graficos</a>
+ <a class="btn btn-sm btn-primary" href="index.php?p=equipos/grafico" role="button">graficos</a>
 <br>
                 
 

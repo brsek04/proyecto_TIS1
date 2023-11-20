@@ -45,6 +45,14 @@ $(document).ready(function(){
 });
 </script>
 
+<!--  graficos  -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+
+
+
 <!-- alertas -->
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -56,6 +64,10 @@ $(document).ready(function(){
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
 </script>
+
+
+
+
 
 
 </head>
