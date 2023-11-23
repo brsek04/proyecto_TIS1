@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 03:10 AM
+-- Generation Time: Nov 23, 2023 at 11:41 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -98,6 +98,8 @@ CREATE TABLE `equipos` (
   `almacenamiento_id` int(10) NOT NULL,
   `tipoAlmacenamiento_id` int(10) NOT NULL,
   `funcionario_id` int(10) NOT NULL,
+  `formaIngreso_id` int(10) NOT NULL,
+  `fechaMantencion` date DEFAULT NULL,
   `costo` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -105,34 +107,13 @@ CREATE TABLE `equipos` (
 -- Dumping data for table `equipos`
 --
 
-INSERT INTO `equipos` (`id`, `fechaIngreso`, `modelo`, `tipo_id`, `marca_id`, `memoria_id`, `almacenamiento_id`, `tipoAlmacenamiento_id`, `funcionario_id`, `costo`) VALUES
-(58, '2023-11-07', 'Iphone 12 Mini', 16, 15, 7, 7, 10, 8, 600000),
-(61, '2023-11-24', 'Ipad 14', 15, 15, 7, 9, 10, 12, 1000000),
-(66, '0000-00-00', '', 13, 12, 6, 7, 7, 7, 0),
-(68, '0000-00-00', '', 13, 12, 6, 7, 7, 7, 0),
-(69, '0000-00-00', '', 13, 12, 6, 7, 7, 15, 0),
-(70, '0000-00-00', '', 13, 12, 6, 7, 7, 19, 0),
-(71, '2023-01-01', '', 13, 12, 6, 7, 7, 7, 0),
-(72, '2023-02-02', '', 13, 12, 6, 7, 7, 7, 10),
-(73, '2020-01-02', '', 13, 12, 6, 7, 7, 19, 1000000),
-(74, '0000-00-00', '', 13, 12, 6, 7, 7, 19, 0),
-(77, '0001-01-01', '', 15, 13, 6, 9, 8, 8, 300),
-(78, '0001-01-01', '', 15, 13, 6, 9, 8, 8, 300),
-(79, '0000-00-00', '', 15, 13, 7, 9, 7, 8, 0),
-(80, '0000-00-00', '', 15, 14, 6, 8, 7, 8, 0),
-(81, '0000-00-00', '', 15, 13, 8, 8, 8, 8, 0),
-(82, '0000-00-00', '', 15, 13, 8, 8, 8, 8, 0),
-(83, '0003-03-23', '', 15, 13, 8, 9, 9, 8, 0),
-(84, '0003-03-23', '', 15, 13, 8, 9, 9, 8, 0),
-(85, '0003-03-23', '', 15, 13, 8, 9, 9, 8, 0),
-(86, '0000-00-00', '', 14, 13, 7, 8, 7, 8, 0),
-(87, '2222-02-22', '', 15, 14, 7, 7, 9, 8, 0),
-(88, '2222-02-02', '', 15, 13, 7, 8, 9, 8, 0),
-(89, '0000-00-00', '', 13, 14, 6, 9, 10, 19, 0),
-(90, '0000-00-00', '', 15, 13, 8, 8, 8, 19, 0),
-(91, '0000-00-00', '', 13, 15, 6, 9, 8, 19, 0),
-(92, '0000-00-00', '', 14, 13, 7, 9, 8, 7, 0),
-(93, '0000-00-00', '', 16, 13, 7, 8, 8, 7, 0);
+INSERT INTO `equipos` (`id`, `fechaIngreso`, `modelo`, `tipo_id`, `marca_id`, `memoria_id`, `almacenamiento_id`, `tipoAlmacenamiento_id`, `funcionario_id`, `formaIngreso_id`, `fechaMantencion`, `costo`) VALUES
+(2, '0004-12-04', 'wffew', 14, 13, 7, 10, 8, 19, 2, '0000-00-00', 3413312),
+(3, '0002-02-02', 'sdafas', 16, 15, 7, 8, 8, 7, 3, '0000-00-00', 33333),
+(4, '1111-01-01', 'fsadfsadf', 13, 12, 8, 10, 7, 12, 2, '0003-03-03', 24535),
+(5, '2023-11-20', '', 15, 14, 8, 8, 8, 19, 3, '0000-00-00', 0),
+(6, '2023-01-01', 'sdfgsdgsdf', 14, 13, 7, 8, 9, 7, 2, '2022-02-02', 500000),
+(7, '0000-00-00', '', 14, 14, 7, 7, 7, 22, 2, '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -152,6 +133,25 @@ CREATE TABLE `establecimientos` (
 
 INSERT INTO `establecimientos` (`id`, `establecimiento`, `comuna_id`) VALUES
 (7, 'Municipalidad de Concepcion', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `formaingresos`
+--
+
+CREATE TABLE `formaingresos` (
+  `id` int(10) NOT NULL,
+  `formaIngreso` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `formaingresos`
+--
+
+INSERT INTO `formaingresos` (`id`, `formaIngreso`) VALUES
+(2, 'arriendos'),
+(3, 'regalo');
 
 -- --------------------------------------------------------
 
@@ -178,7 +178,8 @@ INSERT INTO `funcionarios` (`id`, `nombre`, `apellido`, `email`, `establecimient
 (10, 'Bastian', 'Sandoval', 'bsandoval@ing.ucsc.cl', 7, 6),
 (12, 'Wyroska', 'Covid', 'sr.bastii@gmail.com', 7, 4),
 (15, 'a', 'a', 'a@a.a', 7, 4),
-(19, 'martin', 'barra', 'mbarra@ing.ucsc.cl', 7, 4);
+(19, 'martin', 'barra', 'mbarra@ing.ucsc.cl', 7, 4),
+(22, 'no asignado', 'no asignado', 'noasignado@gsdfsd.com', 7, 4);
 
 -- --------------------------------------------------------
 
@@ -238,7 +239,15 @@ INSERT INTO `historialequipos` (`id`, `descripcion`, `trn_date`, `equipo_id`, `f
 (106, 'Se agregó el equipo 90 al funcionario martin', '2023-11-22', 90, 19),
 (107, 'Se agregó el equipo 91 al funcionario martin', '2023-11-22', 91, 19),
 (108, 'Se agregó el equipo 92 al funcionario Bruno', '2023-11-22', 92, 7),
-(109, 'Se agregó el equipo 93 al funcionario Bruno', '2023-11-22', 93, 7);
+(109, 'Se agregó el equipo 93 al funcionario Bruno', '2023-11-22', 93, 7),
+(110, 'Se agregó el equipo 1 al funcionario martin', '2023-11-23', 1, 19),
+(111, 'Se eliminó el equipo # 1 - Notebook', '2023-11-23', 1, 19),
+(112, 'Se agregó el equipo 2 al funcionario martin', '2023-11-23', 2, 19),
+(113, 'Se agregó el equipo 3 al funcionario Bruno', '2023-11-23', 3, 7),
+(114, 'Se agregó el equipo 4 al funcionario Wyroska', '2023-11-23', 4, 12),
+(115, 'Se agregó el equipo 5 al funcionario martin', '2023-11-23', 5, 19),
+(116, 'Se agregó el equipo 6 al funcionario Bruno', '2023-11-23', 6, 7),
+(117, 'Se agregó el equipo 7 al funcionario no asignado', '2023-11-23', 7, 22);
 
 -- --------------------------------------------------------
 
@@ -427,7 +436,8 @@ ALTER TABLE `equipos`
   ADD KEY `almacenamiento_id` (`almacenamiento_id`),
   ADD KEY `tipoAlmacenamiento_id` (`tipoAlmacenamiento_id`),
   ADD KEY `marca_id` (`marca_id`),
-  ADD KEY `funcionario_id` (`funcionario_id`);
+  ADD KEY `funcionario_id` (`funcionario_id`),
+  ADD KEY `formaIngreso_id` (`formaIngreso_id`);
 
 --
 -- Indexes for table `establecimientos`
@@ -435,6 +445,12 @@ ALTER TABLE `equipos`
 ALTER TABLE `establecimientos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `comuna_id` (`comuna_id`);
+
+--
+-- Indexes for table `formaingresos`
+--
+ALTER TABLE `formaingresos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `funcionarios`
@@ -520,7 +536,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT for table `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `establecimientos`
@@ -529,16 +545,22 @@ ALTER TABLE `establecimientos`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `formaingresos`
+--
+ALTER TABLE `formaingresos`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `historialequipos`
 --
 ALTER TABLE `historialequipos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `marcas`
@@ -601,6 +623,7 @@ ALTER TABLE `equipos`
   ADD CONSTRAINT `equipos_ibfk_3` FOREIGN KEY (`tipoAlmacenamiento_id`) REFERENCES `tipoalmacenamientos` (`id`),
   ADD CONSTRAINT `equipos_ibfk_4` FOREIGN KEY (`almacenamiento_id`) REFERENCES `almacenamientos` (`id`),
   ADD CONSTRAINT `equipos_ibfk_5` FOREIGN KEY (`funcionario_id`) REFERENCES `funcionarios` (`id`),
+  ADD CONSTRAINT `equipos_ibfk_6` FOREIGN KEY (`formaIngreso_id`) REFERENCES `formaingresos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_equipos_tipo` FOREIGN KEY (`tipo_id`) REFERENCES `tipo` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
