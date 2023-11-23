@@ -12,6 +12,9 @@ $almacenamientos = $_POST["almacenamientos"];
 $tipoAlmacenamientos = $_POST["tipoAlmacenamientos"];
 $modelo = $_POST["modelo"];
 $costo = $_POST["costo"];
+$formaIngresos = $_POST["formaIngresos"];
+$fechaMantenimientos = $_POST["fechaMantencion"];
+
 
 
 $queryTipoEquipo = "SELECT tipo.tipo FROM tipo WHERE tipo.id = $tipoEquipo";
@@ -30,7 +33,7 @@ if ($resultTipoEquipo) {
         $nombreFuncionario = $funcionarioRow['nombre'];
 
         
-        $query = "INSERT INTO equipos (fechaIngreso, funcionario_id, tipo_id, marca_id, memoria_id, almacenamiento_id, tipoAlmacenamiento_id, modelo, costo) VALUES ('$fechaIngreso', '$funcionario', '$tipoEquipo', '$marcas', '$memorias', '$almacenamientos', '$tipoAlmacenamientos', '$modelo', '$costo')";
+        $query = "INSERT INTO equipos (fechaIngreso, funcionario_id, tipo_id, marca_id, memoria_id, almacenamiento_id, tipoAlmacenamiento_id, formaIngreso_id, fechaMantencion, modelo, costo) VALUES ('$fechaIngreso', '$funcionario', '$tipoEquipo', '$marcas', '$memorias', '$almacenamientos', '$tipoAlmacenamientos', '$formaIngresos', '$fechaMantenimientos', '$modelo', '$costo')";
         $result = mysqli_query($connection, $query);
 
         session_start();

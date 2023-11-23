@@ -67,6 +67,22 @@ foreach($queryHorizontalBar as $data)
   $totalCostFuncionario[] = $data['total_cost'];
 }
 
+
+$queryPolarAreaIngreso = $connection->query("
+  SELECT 
+    f.formaIngreso,
+    COUNT(*) as cantidad
+  FROM equipos e
+  JOIN formaIngresos f ON e.formaIngreso_id = f.id
+  GROUP BY f.formaIngreso
+");
+
+foreach($queryPolarAreaIngreso as $data)
+{
+  $formaIngresos[] = $data['formaIngreso'];
+  $cantidadFormaIngreso[] = $data['cantidad'];
+}
+
 // Función para generar una paleta de colores única
 function generarPaletaColores($cantidad)
 {
@@ -96,6 +112,11 @@ $coloresBarras = generarPaletaColores(count($funcionarios));
 
 <div style="width: 500px; float: left;">
   <canvas id="myHorizontalBarChart"></canvas>
+</div>
+
+
+<div style="width: 300px; float: left;">
+  <canvas id="myDoughnutChartTipo2"></canvas>
 </div>
 
 <script>
@@ -280,6 +301,63 @@ const configHorizontalBar = {
 var myHorizontalBarChart = new Chart(
   document.getElementById('myHorizontalBarChart'),
   configHorizontalBar
+);
+
+
+
+
+
+const labelsDoughnutTipo2 = <?php echo json_encode($formaIngresos) ?>;
+const dataDoughnutTipo2 = {
+  labels: labelsDoughnutTipo2,
+  datasets: [{
+    data: <?php echo json_encode($cantidadFormaIngreso) ?>,
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+    borderColor: [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)'
+    ],
+    borderWidth: 1
+  }]
+};
+
+const configDoughnutTipo2 = {
+  type: 'doughnut',
+  data: dataDoughnutTipo2,
+  options: {
+    plugins: {
+      datalabels: {
+        color: '#fff',
+        formatter: (value, context) => {
+          var index = context.dataIndex;
+          var quantity = <?php echo json_encode($cantidadFormaIngreso) ?>[index];
+
+          return 'Cantidad: ' + quantity;
+        },
+        anchor: 'end',
+        align: 'start',
+        offset: 10
+      }
+    }
+  }
+};
+
+var myDoughnutChartTipo2 = new Chart(
+  document.getElementById('myDoughnutChartTipo2'),
+  configDoughnutTipo2
 );
 
 </script>

@@ -179,7 +179,30 @@
                                 </select>
 
                     </div>
-                          
+
+
+                    <div class="col-md-12 mb-3">
+                        <label for="formaIngresos" class="form-label">Forma de Ingreso</label>
+                        <select class="form-control" id="formaIngresos" name="formaIngresos">
+                            <option disabled selected> Seleccione una opcion</option>
+                                <?php
+                                    include("database/connection.php");
+                                    $sql = $connection -> query ("SELECT * FROM formaIngresos");
+                                    while($resultado = $sql -> fetch_assoc()){
+                                        echo "<option value='".$resultado['id']."'>".$resultado['formaIngreso']." </option>";
+                                    }
+
+
+                                ?>
+                                </select>
+
+                    </div>
+
+
+                         <div class="col-md-12 mb-3">
+                        <label for="fechaMantencion" class="form-label">Fecha de Mantencion</label>
+                        <input type="date" class="form-control" id="fechaMantencion" name="fechaMantencion" >
+                    </div> 
 
 
 

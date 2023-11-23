@@ -34,7 +34,7 @@ class PDF extends FPDF
         $totalEquipos = $rowTotalEquipos['totalEquipos'];
 
         $this->Cell(60);
-        $this->Cell(65, 12, "Reporte: {$this->fechaInicio} - {$this->fechaTermino} ($totalEquipos Equipos)", 0, 1, 'C'); // Título "Reporte"
+        $this->Cell(65, 2, "Reporte: {$this->fechaInicio} - {$this->fechaTermino} ($totalEquipos Equipos)", 0, 1, 'C'); // Título "Reporte"
        
         
 

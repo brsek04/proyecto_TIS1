@@ -13,14 +13,16 @@ $additionSuccess = isset($_SESSION['addition_success']) ? $_SESSION['addition_su
 unset($_SESSION['addition_success']);
 
 
-$query = "SELECT equipos.*, funcionarios.nombre AS funcionario, tipo.tipo AS nombreOpcion, marcas.marca AS marcas, memorias.memoria AS memorias, almacenamientos.almacenamiento AS almacenamientos, tipoAlmacenamientos.tipoAlmacenamiento AS tipoAlmacenamientos 
+$query = "SELECT equipos.*, funcionarios.nombre AS funcionario, tipo.tipo AS nombreOpcion, marcas.marca AS marcas, memorias.memoria AS memorias, almacenamientos.almacenamiento AS almacenamientos, tipoAlmacenamientos.tipoAlmacenamiento AS tipoAlmacenamientos, formaIngresos.formaIngreso AS formaIngresos
 FROM equipos
 LEFT JOIN funcionarios ON equipos.funcionario_id = funcionarios.id
 LEFT JOIN tipo ON equipos.tipo_id = tipo.id
 LEFT JOIN marcas ON equipos.marca_id = marcas.id
 LEFT JOIN memorias ON equipos.memoria_id = memorias.id
 LEFT JOIN almacenamientos ON equipos.almacenamiento_id = almacenamientos.id
-LEFT JOIN tipoAlmacenamientos ON equipos.tipoAlmacenamiento_id = tipoAlmacenamientos.id;
+LEFT JOIN tipoAlmacenamientos ON equipos.tipoAlmacenamiento_id = tipoAlmacenamientos.id
+LEFT JOIN formaIngresos ON equipos.formaIngreso_id = formaIngresos.id
+;
 ";
 $result = mysqli_query($connection, $query);
 ?>
@@ -129,6 +131,8 @@ $result = mysqli_query($connection, $query);
                         <th scope="col">Memoria</th>
                         <th scope="col">Almacenamiento</th>
                         <th scope="col">Tipo de almacenamiento</th>
+                        <th scope="col">Ingreso</th>
+                        <th scope="col">Mantencion</th>
                         <th scope="col">Costo</th>
                         <th scope="col">Opciones</th>
                     </tr>
@@ -139,13 +143,15 @@ $result = mysqli_query($connection, $query);
                             <th scope="row"><?= $fila['id'] ?></th>
                             <td><?= $fila['fechaIngreso'] ?></td>
                             <td><?=$fila['funcionario'] ?></td>
-                            <!-- Aqui iba el tipo equipo que esta en el sticky notes-->
+                           
                             <td><?= $fila['modelo'] ?></td>
                             <td><?=$fila['nombreOpcion'] ?></td>
                             <td><?=$fila['marcas'] ?></td>
                             <td><?=$fila['memorias'] ?> GB</td>
                             <td><?=$fila['almacenamientos'] ?> GB</td>
                             <td><?=$fila['tipoAlmacenamientos'] ?></td>
+                            <td><?=$fila['formaIngresos'] ?></td>
+                            <td><?=$fila['fechaMantencion'] ?></td>
                             <td><?php echo "$".$fila['costo'] ?></td>
                             <td>
                                 <a href="index.php?p=equipos/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>

@@ -1,4 +1,25 @@
-<div class="d-flex" id="wrapper">
+<?php
+    include("database/connection.php");  // Incluye la conexión
+    include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
+
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+   
+    $deletionSuccess = isset($_SESSION['deletion_success']) ? $_SESSION['deletion_success'] : false;
+    
+    
+    unset($_SESSION['deletion_success']);
+
+    $additionSuccess = isset($_SESSION['addition_success']) ? $_SESSION['addition_success'] : false;
+    unset($_SESSION['addition_success']);
+
+    $query = "SELECT * FROM formaIngresos";
+    $result = mysqli_query($connection, $query);
+?>
+
+    <div class="d-flex" id="wrapper">
         <div class="bg-white" id="sidebar-wrapper">
            <li class="nav-item row align-items-start">
                         <a class="nav-link <?php echo ($pagina == 'home') ? 'active' : null ?>" aria-current="page" href="index.php?p=home"><img class="p-0 m-3" src="logo-inventrack.png" alt="" width="240"></a>
@@ -25,7 +46,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Mantenedores</h2>
+                    <h2 class="fs-2 m-0">Forma de Ingreso</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -51,58 +72,75 @@
                 </div>
             </nav>
 
+<main class="container mt-5">
 
-<div class="container text-center">
-  <div class="row g-2">
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item " href="index.php?p=mantenedores/tipoEquipo/index">Tipo equipo</a></li>
-      </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center">
+                <?php if ($deletionSuccess): ?>
+                        <script>
+                        Swal.fire("Eliminacion exitosa");
+                        </script>
+                    <?php endif; ?>
+
+
+                    <?php if ($additionSuccess): ?>
+                        <script>
+                        Swal.fire("Registro exitoso");
+                        </script>
+                    <?php endif; ?>
+                </div>
+                <div>              
+                    <a class="btn btn-sm btn-primary" href="index.php?p=mantenedores/formaIngresos/create" role="button">Agregar nuevo</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body table-responsive ">
+            <table class="table table-hover">
+                <thead class="">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Forma de Ingreso</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($fila = mysqli_fetch_array($result)) : ?>
+                        <tr>
+                            <th scope="row"><?= $fila['id'] ?></th>
+                            
+                            <td><?= $fila['formaIngreso'] ?></td>
+                          
+                            <td>
+
+
+                            
+                                <a href="index.php?p=mantenedores/formaIngresos/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
+                                
+                                <a href="javascript:borrar(<?= $fila['id'] ?>);" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            </td>
+                        </tr>
+
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/marcas/index">Marcas</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/memorias/index">Memoria</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/almacenamientos/index">Almacenamiento</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/tipoAlmacenamientos/index">Tipo almacenamiento</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/departamentos/index">Departamento</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/establecimientos/index">Establecimiento</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/comunas/index">Comunas</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/regiones/index">Regiones</a></li>
-      </div>
-    </div>
-    <div class="row border gx-1 col-6">
-      <div class="p-3">
-      <li><a class="dropdown-item" href="index.php?p=mantenedores/formaIngresos/index">Formas de Ingreso</a></li>
-      </div>
-    </div>
-  </div>
-</div>
+</main>
+
+<script>
+    function borrar (id){
+        Swal.fire({
+            title: '¿Seguro que deseas borrar?',
+            showCancelButton: true,
+            confirmButtonText: 'Si, borrar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location="pages/mantenedores/formaIngresos/actions/delete.php?id="+id;
+                    
+  }
+});
+    }
+    </script>

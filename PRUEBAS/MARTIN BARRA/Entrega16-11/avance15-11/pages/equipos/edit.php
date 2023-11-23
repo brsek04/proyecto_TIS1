@@ -16,6 +16,8 @@ if ($row = mysqli_fetch_assoc($result)) {
     $memorias = $row["memoria_id"];
     $almacenamientos = $row["almacenamiento_id"];
     $tipoAlmacenamientos = $row["tipoAlmacenamiento_id"];
+    $formaIngreso = $row["formaIngreso_id"];
+    $fechaMantencion = $row["fechaMantencion"];
     $costo = $row["costo"];
     $id = $row["id"];
 } else {
@@ -180,10 +182,25 @@ if ($row = mysqli_fetch_assoc($result)) {
                     </div>
 
 
+                    <div class="col-md-12 mb-3">
+                        <label for="formaIngresos" class="form-label">Formas de Ingresos</label>
+                        <select class="form-control" id="formaIngresos" name="formaIngresos">
+                            <option disabled>Selecciona una opción</option>
+                            <?php
+                            $sql = $connection->query("SELECT * FROM formaIngresos");
+                            while ($resultado = $sql->fetch_assoc()) {
+                                $selected = ($resultado['id'] == $tipoAlmacenamientos) ? "selected" : "";
+                                echo "<option value='" . $resultado['id'] . "' $selected>" . $resultado['formaIngreso'] . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
 
 
-
-
+                    <div class="col-md-12 mb-3">
+                        <label for="fechaMantencion" class="form-label">Fecha de Mantencion</label>
+                        <input type="date" class="form-control" id="fechaMantencion" name="fechaMantencion"  value="<?php echo $fechaMantencion ?>">
+                    </div>
 
 
                     <div class="col-md-12 mb-3">
