@@ -60,7 +60,18 @@ if ($resultTipoEquipo) {
                     echo '<input type="hidden" id="subject" value="Asignación de equipo">';
                     echo '<input type="hidden" id="replyto" value="">';
                     echo '<input type="hidden" id="message" value="' . $descripcion2 . '">';
-                } else {
+
+                    
+                    $estado = "asignado";
+                    $queryUpdateTicket = "UPDATE tickets SET estado = '$estado' WHERE tipo_id = $tipoEquipo AND funcionario_id = $funcionario AND estado = 'enviado' LIMIT 1";
+                    $result4 = mysqli_query($connection, $queryUpdateTicket);
+                
+                
+                
+
+                }
+                
+                else {
                     
                     echo "Error al obtener el correo del funcionario: " . mysqli_error($connection);
                 }
@@ -109,4 +120,3 @@ if ($resultTipoEquipo) {
 
 
     </script>
-

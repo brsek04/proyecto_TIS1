@@ -23,6 +23,8 @@
                         class="fa-solid fa-bars-progress me-2"></i>Mantenedores</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-calendar me-2"></i>Calendario</a>
+                        <a href="index.php?p=equipos/indexTickets" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fa-solid fa-bars-progress me-2"></i>Tickets</a>
                 <a href="pages/auth/actions/logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Salir</a>
             </div>

@@ -44,8 +44,11 @@ $result = mysqli_query($connection, $query);
                         class="fa-solid fa-people-group me-2"></i>Funcionarios</a>
                 <a href="index.php?p=mantenedores/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-bars-progress me-2"></i>Mantenedores</a>
+                        
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-calendar me-2"></i>Calendario</a>
+                        <a href="index.php?p=equipos/indexTickets" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fa-solid fa-bars-progress me-2"></i>Tickets</a>
                 <a href="pages/auth/actions/logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
                         class="fas fa-power-off me-2"></i>Salir</a>
             </div>
@@ -191,7 +194,9 @@ $result = mysqli_query($connection, $query);
 <a href="pages/equipos/reporte.php" class="btn btn-success" target="_blank"> Tabla pdf </a>
 <br>
 
-<a href="pages/equipos/reporteSQL.php" class="btn btn-secundary" > Reporte </a>
+<a href="index.php?p=equipos/reporteSQL" class="btn btn-secundary" > Reporte </a>
+<br>
+<a href="index.php?p=mantenedores/tickets/index" class="btn btn-secundary" > Mandar Ticket</a>
 </div>
 <br>
 <br>
