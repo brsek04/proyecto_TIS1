@@ -31,12 +31,6 @@
     </div>
 </div>
 
-<div class="col-md-12 mb-3">
-    <label class="form-check-label">Modelo</label>
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="modeloCheckbox" name="modeloCheckbox">
-    </div>
-</div>
 
 
 <div class="col-md-12 mb-3">
@@ -50,6 +44,13 @@
     <label class="form-check-label">Marca</label>
     <div class="form-check">
         <input class="form-check-input" type="checkbox" id="marcaCheckbox" name="marcaCheckbox">
+    </div>
+</div>
+
+<div class="col-md-12 mb-3">
+    <label class="form-check-label">Forma de Ingreso</label>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="formaIngresoCheckbox" name="formaIngresoCheckbox">
     </div>
 </div>
 

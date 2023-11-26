@@ -104,40 +104,7 @@
                 </div>
 
                 <div class="row my-5">
-                    <h3 class="fs-4 mb-3">Equipos</h3>
-                    <div class="col">
-                        <table class="table bg-white rounded shadow-sm  table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col" width="50">#</th>
-                                    <th scope="col">Tipo de Equipo</th>
-                                    <th scope="col">Encargado</th>
-                                    <th scope="col">Fecha Inicio</th>
-                                    <th scope="col">Marca </th>
-                                    <th scope="col">Valor </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Television</td>
-                                    <td>Bruno</td>
-                                    <td>16/04/2023</td>
-                                    <td>Samsung</td>
-                                    <td>$120.000</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Computador escritorio</td>
-                                    <td>Patricio</td>
-                                    <td>16/04/2023</td>
-                                    <td>HP</td>
-                                    <td>$710.000</td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
+                
                 </div>
     <!-- 
 

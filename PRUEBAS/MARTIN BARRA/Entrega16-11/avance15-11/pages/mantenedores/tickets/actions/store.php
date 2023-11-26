@@ -8,7 +8,7 @@
     
     
 
-    $query = "INSERT INTO tickets (tipo_id,funcionario_id, comentario, estado) VALUES ('$tipo', $funcionario, '$comentario', '$estado');";
+    $query = "INSERT INTO tickets (tipo_id, fecha ,funcionario_id, comentario, estado) VALUES ('$tipo', NOW(),$funcionario, '$comentario', '$estado');";
     $result =  mysqli_query($connection, $query);
 
     if ($result) {

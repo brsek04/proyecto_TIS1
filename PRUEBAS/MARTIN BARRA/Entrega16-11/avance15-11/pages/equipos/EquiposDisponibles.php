@@ -22,6 +22,7 @@ LEFT JOIN memorias ON equipos.memoria_id = memorias.id
 LEFT JOIN almacenamientos ON equipos.almacenamiento_id = almacenamientos.id
 LEFT JOIN tipoAlmacenamientos ON equipos.tipoAlmacenamiento_id = tipoAlmacenamientos.id
 LEFT JOIN formaIngresos ON equipos.formaIngreso_id = formaIngresos.id
+WHERE funcionarios.nombre = 'no asignado';
 ;
 ";
 $result = mysqli_query($connection, $query);
@@ -38,67 +39,17 @@ $result = mysqli_query($connection, $query);
 <div class="list-group list-group-flush my-3">
                 <a href="index.php?p=home" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-tachometer-alt me-2"></i>Inicio</a>
-               
-
-                        <div class="btn-group dropend">
-  <button type="button" class="btn btn-secondary">
-    Equipos
-  </button>
-  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropend</span>
-  </button>
-  <ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="index.php?p=equipos/index">Todos los equipos</a></li>
-    <li><a class="dropdown-item" href="index.php?p=equipos/equiposDisponibles">Equipos disponibles</a></li>
-    <li><a class="dropdown-item" href="index.php?p=equipos/equiposAsignados">Equipos asignados</a></li>
-
-    <!-- Dropdown menu links -->
-  </ul>
-</div>
-
-               
-
-                        <div class="btn-group dropend">
-  <button type="button" class="btn btn-secondary">
-    Funcionarios
-  </button>
-  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropend</span>
-  </button>
-  <ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="index.php?p=mantenedores/funcionarios/index">Todos los funcionarios</a></li>
-    <li><a class="dropdown-item" href="index.php?p=mantenedores/funcionarios/funcionariosAsignados">Funcionarios asignados</a></li>
-
-    <!-- Dropdown menu links -->
-  </ul>
-</div>
+                <a href="index.php?p=equipos/index" class="list-group-item list-group-item-action bg-transparent second-text active fw-bold"><i
+                        class="fas fa-project-diagram me-2"></i>Equipos</a>
 
 
 
 
-<div class="btn-group dropend">
-  <button type="button" class="btn btn-secondary">
-    Asignación
-  </button>
-  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropend</span>
-  </button>
-  <ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="index.php?p=equipos/asignacion/index">Asignar</a></li>
-    <li><a class="dropdown-item" href="index.php?p=mantenedores/funcionarios/EditarAsignacion">Editar</a></li>
-
-    <!-- Dropdown menu links -->
-  </ul>
-</div>
-
-
-
-
-
-
+                        
                 <a href="index.php?p=users/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-user me-2"></i>Usuarios</a>
-                
+                <a href="index.php?p=mantenedores/funcionarios/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fa-solid fa-people-group me-2"></i>Funcionarios</a>
                 <a href="index.php?p=mantenedores/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-bars-progress me-2"></i>Mantenedores</a>
                         
@@ -181,7 +132,7 @@ $result = mysqli_query($connection, $query);
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Fecha de ingreso</th>
-                        <th scope="col">Funcionario</th>
+                        
                         <!--<th scope="col">idmantenedor</th>-->
                         <th scope="col">Modelo</th>
                         <th scope="col">Tipo</th>
@@ -200,7 +151,7 @@ $result = mysqli_query($connection, $query);
                         <tr>
                             <th scope="row"><?= $fila['id'] ?></th>
                             <td><?= $fila['fechaIngreso'] ?></td>
-                            <td><?=$fila['funcionario'] ?></td>
+                            
                            
                             <td><?= $fila['modelo'] ?></td>
                             <td><?=$fila['nombreOpcion'] ?></td>

@@ -16,7 +16,8 @@ unset($_SESSION['addition_success']);
 $query = "SELECT tickets.*, funcionarios.email AS funcionario, tipo.tipo AS tipo
 FROM tickets
 LEFT JOIN tipo ON tickets.tipo_id = tipo.id
-LEFT JOIN funcionarios ON tickets.funcionario_id = funcionarios.id;
+LEFT JOIN funcionarios ON tickets.funcionario_id = funcionarios.id
+ORDER BY tickets.fecha DESC;
 
 
 
@@ -114,6 +115,7 @@ $result = mysqli_query($connection, $query);
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">fecha</th>
                         <th scope="col">tipo</th>
                         <th scope="col">comentario</th>
                         <th scope="col">estado</th>
@@ -124,7 +126,7 @@ $result = mysqli_query($connection, $query);
                     <?php while ($fila = mysqli_fetch_array($result)) : ?>
                         <tr>
                             <th scope="row"><?= $fila['id'] ?></th>
-                            
+                            <td><?= $fila['fecha'] ?></td>
                             <td><?= $fila['tipo'] ?></td>
                             <td><?= $fila['comentario'] ?></td>
                             <td><?= $fila['estado'] ?></td>

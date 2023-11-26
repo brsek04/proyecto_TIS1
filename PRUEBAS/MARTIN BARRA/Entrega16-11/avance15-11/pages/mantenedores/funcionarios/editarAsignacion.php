@@ -1,28 +1,37 @@
-<?php ob_start(); 
-include("database/connection.php");  // Incluye la conexión
-include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
+<?php
+    include("database/connection.php");  // Incluye la conexión
+    include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-$deletionSuccess = isset($_SESSION['deletion_success']) ? $_SESSION['deletion_success'] : false;
-unset($_SESSION['deletion_success']);
-
-$additionSuccess = isset($_SESSION['addition_success']) ? $_SESSION['addition_success'] : false;
-unset($_SESSION['addition_success']);
-
-
-$query = "SELECT tickets.*, funcionarios.email AS email, tipo.tipo AS tipo
-FROM tickets
-LEFT JOIN tipo ON tickets.tipo_id = tipo.id
-LEFT JOIN funcionarios ON tickets.funcionario_id = funcionarios.id
-ORDER BY tickets.fecha DESC;
+    $query = "SELECT funcionarios.*, establecimientos.establecimiento AS establecimiento, departamentos.departamento AS departamento,
+    GROUP_CONCAT(CONCAT(equipos.id, '-', tipo.tipo) SEPARATOR ', ') AS equipos_info
+FROM funcionarios
+LEFT JOIN establecimientos ON funcionarios.establecimiento_id = establecimientos.id
+LEFT JOIN departamentos ON funcionarios.departamento_id = departamentos.id
+LEFT JOIN equipos ON funcionarios.id = equipos.funcionario_id
+LEFT JOIN tipo ON equipos.tipo_id = tipo.id
+WHERE funcionarios.nombre != 'no asignado'
+GROUP BY funcionarios.id
+HAVING equipos_info IS NOT NULL AND equipos_info != ''
 
 
 
-";
-$result = mysqli_query($connection, $query);
+;";
+    
+
+    $result = mysqli_query($connection, $query);
+
+
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+   
+    $deletionSuccess = isset($_SESSION['deletion_success']) ? $_SESSION['deletion_success'] : false;
+    
+    unset($_SESSION['deletion_success']);
+    $additionSuccess = isset($_SESSION['addition_success']) ? $_SESSION['addition_success'] : false;
+    unset($_SESSION['addition_success']);
+
 ?>
 
     <div class="d-flex" id="wrapper">
@@ -34,24 +43,8 @@ $result = mysqli_query($connection, $query);
             <div class="list-group list-group-flush my-3">
                 <a href="index.php?p=home" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-tachometer-alt me-2"></i>Inicio</a>
-                
-
-                        <div class="btn-group dropend">
-  <button type="button" class="btn btn-secondary">
-    Equipos
-  </button>
-  <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropend</span>
-  </button>
-  <ul class="dropdown-menu">
-  <li><a class="dropdown-item" href="index.php?p=equipos/index">Todos los equipos</a></li>
-    <li><a class="dropdown-item" href="index.php?p=equiposDisponibles/index">Equipos disponibles</a></li>
-    <li><a class="dropdown-item" href="index.php?p=equiposAsignados/index">Equipos asignados</a></li>
-
-    <!-- Dropdown menu links -->
-  </ul>
-</div>
-                        
+                <a href="index.php?p=equipos/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fas fa-project-diagram me-2"></i>Equipos</a>
                 <a href="index.php?p=users/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-user me-2"></i>Usuarios</a>
                 <a href="index.php?p=mantenedores/funcionarios/index" class="list-group-item list-group-item-action bg-transparent second-text active fw-bold"><i
@@ -68,7 +61,7 @@ $result = mysqli_query($connection, $query);
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-                    <h2 class="fs-2 m-0">Tickets</h2>
+                    <h2 class="fs-2 m-0">Funcionarios asignados</h2>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -122,7 +115,7 @@ $result = mysqli_query($connection, $query);
                     <?php endif; ?>
                 </div>
                 <div>              
-                    
+
                 </div>
             </div>
         </div>
@@ -131,31 +124,48 @@ $result = mysqli_query($connection, $query);
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">fecha</th>
-                        <th scope="col">email</th>
-                        <th scope="col">tipo</th>
-                        <th scope="col">comentario</th>
-                        <th scope="col">estado</th>
-                        <th scope="col">opcion</th>
-                       
+                        <th scope="col">Nombre</th>
+                        
+                        <th scope="col">Correo electronico</th>
+                        
+                        <th scope="col">Departamento</th>
+
+                        <th scope="col">Info de equipo</th>
+                        <th scope="col">Acción</th>
+
+                        
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($fila = mysqli_fetch_array($result)) : ?>
                         <tr>
                             <th scope="row"><?= $fila['id'] ?></th>
-                            <td><?= $fila['fecha'] ?></td>
-                            <td><?= $fila['email'] ?></td>
-                            <td><?= $fila['tipo'] ?></td>
-                            <td><?= $fila['comentario'] ?></td>
-                            <td><?= $fila['estado'] ?></td>
                             
-                            <td>
-                            <a href="index.php?p=equipos/ticketsAction/update&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Rechazar</a>
+                            <td><?= $fila['nombre'] ?></td>
+                            
+                            <td><?= $fila['email'] ?></td>
+                            <td><?= $fila['departamento'] ?></td>
+                          
+                            <td><?= $fila['equipos_info'] ?>
+
+                    </td>
+                    <td>
+
+
+                          
 
                             
-                                
-                            </td>
+                                        <?php
+                                            $equipos = explode(', ', $fila['equipos_info']);
+                                            foreach ($equipos as $equipo) {
+                                                list($id, $tipo) = explode('-', $equipo);
+                                                echo '<a href="javascript:borrar(' . $id . ');" class="btn btn-sm btn-outline-danger">quitar #' . $id . '</a><br>';
+                                            }
+                                        ?>
+                                        
+                                      
+
+                                        </td>
                         </tr>
 
                     <?php endwhile; ?>
@@ -183,7 +193,7 @@ $result = mysqli_query($connection, $query);
             confirmButtonColor: '#dc3545',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location="pages/mantenedores/tickets/actions/delete.php?id="+id;
+                    window.location="pages/mantenedores/funcionarios/actiona/borrara.php?id="+id;
                     
   }
 });
