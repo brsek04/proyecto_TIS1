@@ -42,6 +42,8 @@ $(document).ready(function(){
 			"url": '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
 			
 		}	
+   
+    
 	});
 });
 </script>
@@ -63,6 +65,7 @@ $(document).ready(function(){
 });
 </script>
 
+<!-- data tables de asignacion-->
 <script>
 $(document).ready(function() {
     $(".scrollDataTables").DataTable({
@@ -73,8 +76,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
 
 
 <!--  graficos  -->
@@ -229,7 +230,7 @@ $(document).ready(function() {
                 <a href="index.php?p=mantenedores/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-bars-progress me-2"></i>Mantenedores</a>
                         
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="index.php?p=calendario/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-calendar me-2"></i>Calendario</a>
                         <a href="index.php?p=equipos/indexTickets" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fa-solid fa-bars-progress me-2"></i>Tickets</a>

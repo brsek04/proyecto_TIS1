@@ -69,7 +69,17 @@ if ($resultTipoEquipo) {
                     $queryUpdateTicket = "UPDATE tickets SET estado = '$estado' WHERE tipo_id = $tipoEquipo AND funcionario_id = $funcionario AND estado = 'enviado' LIMIT 1";
                     $result4 = mysqli_query($connection, $queryUpdateTicket);
                 
-                
+
+                    // para el calendario
+                    $title = "#$idEquipo - $nombreTipoEquipo" ;
+                    $start_date = $fechaMantenimientos;
+                    $end_date = $fechaMantenimientos;
+
+                        $insert_query = mysqli_query($connection, "insert into mantenciones set title='$title', start_date='$start_date', end_date='$end_date'");
+
+
+
+
                 
 
                 }

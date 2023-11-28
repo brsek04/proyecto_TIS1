@@ -98,63 +98,26 @@ function generarPaletaColores($cantidad)
 $coloresBarras = generarPaletaColores(count($funcionarios));
 
 ?>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-4 ">
-      
-
-      <div style="width: 100%;">
-         <canvas id="myDoughnutChartTipo"></canvas>
-      </div>
-
-
-    </div>
-
-    <div class="col-lg-4">
-
-
-      <div style="width: 100%; ">
-        <canvas id="myPieChartMarca"></canvas>
-      </div>
-      </div>
-    <div class="col-lg-4">
-        <div style="width: 100%; ">
-            <canvas id="myDoughnutChartTipo2"></canvas>
-    </div>
-</div>
-
-
-    </div>
-
-  
-</div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12 text-center">
-    <div style="width: 80%;" >
+<div style="width: 500px; float: left;">
   <canvas id="myChart"></canvas>
 </div>
-    </div>
-  </div>
+
+<div style="width: 300px; float: left;">
+  <canvas id="myPieChartMarca"></canvas>
 </div>
 
+<div style="width: 300px; float: left;">
+  <canvas id="myDoughnutChartTipo"></canvas>
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12 text-center">
-    <div style="width: 80%; ">
+<div style="width: 500px; float: left;">
   <canvas id="myHorizontalBarChart"></canvas>
 </div>
-    </div>
-  </div>
+
+
+<div style="width: 300px; float: left;">
+  <canvas id="myDoughnutChartTipo2"></canvas>
 </div>
-
-
-
-
-
 
 <script>
   // Configuración para el gráfico de barras

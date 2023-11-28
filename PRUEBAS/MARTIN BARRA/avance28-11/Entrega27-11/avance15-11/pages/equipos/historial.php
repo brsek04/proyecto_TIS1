@@ -16,7 +16,7 @@ $result = mysqli_query($connection, $query);
             </div>
         </div>
         <div class="card-body table-responsive">
-            <table class="table table-hover dataTables" >
+            <table class="table table-hover dataTables">
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>

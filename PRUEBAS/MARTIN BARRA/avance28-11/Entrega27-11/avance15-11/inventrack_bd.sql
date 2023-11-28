@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2023 at 11:41 PM
+-- Generation Time: Nov 29, 2023 at 12:26 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -113,7 +113,9 @@ INSERT INTO `equipos` (`id`, `fechaIngreso`, `modelo`, `tipo_id`, `marca_id`, `m
 (4, '1111-01-01', 'fsadfsadf', 13, 12, 8, 10, 7, 12, 2, '0003-03-03', 24535),
 (5, '2023-11-20', '', 15, 14, 8, 8, 8, 19, 3, '0000-00-00', 0),
 (6, '2023-01-01', 'sdfgsdgsdf', 14, 13, 7, 8, 9, 7, 2, '2022-02-02', 500000),
-(7, '0000-00-00', '', 14, 14, 7, 7, 7, 22, 2, '0000-00-00', 0);
+(7, '0000-00-00', '', 14, 14, 7, 7, 7, 22, 2, '0000-00-00', 0),
+(8, '1111-01-01', 'asdfa', 14, 13, 7, 7, 10, 19, 2, '2023-11-30', 300000),
+(9, '0001-01-01', 'asdfasf', 15, 14, 8, 7, 9, 19, 3, '2023-11-30', 5000000);
 
 -- --------------------------------------------------------
 
@@ -247,7 +249,29 @@ INSERT INTO `historialequipos` (`id`, `descripcion`, `trn_date`, `equipo_id`, `f
 (114, 'Se agregó el equipo 4 al funcionario Wyroska', '2023-11-23', 4, 12),
 (115, 'Se agregó el equipo 5 al funcionario martin', '2023-11-23', 5, 19),
 (116, 'Se agregó el equipo 6 al funcionario Bruno', '2023-11-23', 6, 7),
-(117, 'Se agregó el equipo 7 al funcionario no asignado', '2023-11-23', 7, 22);
+(117, 'Se agregó el equipo 7 al funcionario no asignado', '2023-11-23', 7, 22),
+(118, 'Se agregó el equipo 8 al funcionario martin', '2023-11-28', 8, 19),
+(119, 'Se agregó el equipo 9 al funcionario martin', '2023-11-28', 9, 19);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mantenciones`
+--
+
+CREATE TABLE `mantenciones` (
+  `id` int(10) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mantenciones`
+--
+
+INSERT INTO `mantenciones` (`id`, `title`, `start_date`, `end_date`) VALUES
+(2, '9 - Tablet', '2023-11-30', '2023-11-30');
 
 -- --------------------------------------------------------
 
@@ -316,6 +340,7 @@ INSERT INTO `regiones` (`id`, `region`) VALUES
 
 CREATE TABLE `tickets` (
   `id` int(10) NOT NULL,
+  `fecha` date DEFAULT NULL,
   `tipo_id` int(11) NOT NULL,
   `funcionario_id` int(10) NOT NULL,
   `comentario` varchar(600) NOT NULL,
@@ -326,18 +351,19 @@ CREATE TABLE `tickets` (
 -- Dumping data for table `tickets`
 --
 
-INSERT INTO `tickets` (`id`, `tipo_id`, `funcionario_id`, `comentario`, `estado`) VALUES
-(1, 15, 8, 'quiero una tablet', 'asignado'),
-(2, 15, 8, 'quiero una tablet', 'rechazado'),
-(3, 15, 8, 'quiero una tablet', 'rechazado'),
-(4, 14, 10, 'dfasdf', 'rechazado'),
-(5, 14, 8, 'asdfasdfas', 'asignado'),
-(6, 13, 19, '', 'rechazado'),
-(7, 13, 19, '', 'asignado'),
-(8, 16, 19, '', 'enviado'),
-(9, 15, 7, '', 'rechazado'),
-(10, 16, 7, '', 'asignado'),
-(11, 15, 7, '', 'enviado');
+INSERT INTO `tickets` (`id`, `fecha`, `tipo_id`, `funcionario_id`, `comentario`, `estado`) VALUES
+(1, NULL, 15, 8, 'quiero una tablet', 'asignado'),
+(2, NULL, 15, 8, 'quiero una tablet', 'rechazado'),
+(3, NULL, 15, 8, 'quiero una tablet', 'rechazado'),
+(4, NULL, 14, 10, 'dfasdf', 'rechazado'),
+(5, NULL, 14, 8, 'asdfasdfas', 'asignado'),
+(6, NULL, 13, 19, '', 'rechazado'),
+(7, NULL, 13, 19, '', 'asignado'),
+(8, NULL, 16, 19, '', 'enviado'),
+(9, NULL, 15, 7, '', 'rechazado'),
+(10, NULL, 16, 7, '', 'asignado'),
+(11, NULL, 15, 7, '', 'enviado'),
+(13, '2023-11-28', 14, 19, 'asdf', 'asignado');
 
 -- --------------------------------------------------------
 
@@ -467,6 +493,12 @@ ALTER TABLE `historialequipos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mantenciones`
+--
+ALTER TABLE `mantenciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `marcas`
 --
 ALTER TABLE `marcas`
@@ -536,7 +568,7 @@ ALTER TABLE `departamentos`
 -- AUTO_INCREMENT for table `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `establecimientos`
@@ -560,7 +592,13 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT for table `historialequipos`
 --
 ALTER TABLE `historialequipos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+
+--
+-- AUTO_INCREMENT for table `mantenciones`
+--
+ALTER TABLE `mantenciones`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `marcas`
@@ -584,7 +622,7 @@ ALTER TABLE `regiones`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tipo`

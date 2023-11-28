@@ -68,7 +68,7 @@ GROUP BY funcionarios.id;";
                         <?php if ($additionSuccess): ?>
                             <script>
                             Swal.fire({
-                            title: 'Registro exitoso',
+                            title: 'Asignación exitosa',
                             icon: 'success',
                             confirmButtonColor: '#28a745',
                             });
@@ -149,7 +149,7 @@ GROUP BY funcionarios.id;";
                         <?php if ($additionSuccess): ?>
                             <script>
                             Swal.fire({
-                            title: 'Asignación exitosa',
+                            title: 'Registro exitoso',
                             icon: 'success',
                             confirmButtonColor: '#28a745',
                             });
@@ -161,8 +161,8 @@ GROUP BY funcionarios.id;";
                     </div>
                 </div>
             </div>
-            <div class="card-body table-responsive ">
-                <table class="table table-hover scrollDataTables">
+            <div class="card-body table-responsive scrollDataTables ">
+                <table class="table table-hover">
                     <thead class="">
                         <tr>
                             <th scope="col">#</th>
@@ -225,7 +225,7 @@ GROUP BY funcionarios.id;";
     <script>
         function borrar (id){
             Swal.fire({
-                title: '¿Seguro que deseas borrar ?',
+                title: '¿Seguro que deseas borrar?',
                 showCancelButton: true,
                 confirmButtonText: 'Si, borrar',
                 confirmButtonColor: '#dc3545',
