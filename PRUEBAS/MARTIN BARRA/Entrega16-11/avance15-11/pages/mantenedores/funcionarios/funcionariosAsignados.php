@@ -120,7 +120,7 @@ HAVING equipos_info IS NOT NULL AND equipos_info != ''
             </div>
         </div>
         <div class="card-body table-responsive ">
-            <table class="table table-hover">
+            <table class="table table-hover dataTables">
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>
@@ -132,7 +132,7 @@ HAVING equipos_info IS NOT NULL AND equipos_info != ''
 
                         <th scope="col">Info de equipo</th>
 
-                        <th scope="col">Opciones</th>
+                      
                     </tr>
                 </thead>
                 <tbody>
@@ -150,14 +150,6 @@ HAVING equipos_info IS NOT NULL AND equipos_info != ''
 
                           
 
-                            <td>
-
-
-                            
-                                <a href="index.php?p=mantenedores/funcionarios/edit&id=<?= $fila['id'] ?>" class="btn btn-sm btn-outline-warning">Editar</a>
-                                
-                                <a href="javascript:borrar(<?= $fila['id'] ?>);" class="btn btn-sm btn-outline-danger">Eliminar</a>
-                            </td>
                         </tr>
 
                     <?php endwhile; ?>

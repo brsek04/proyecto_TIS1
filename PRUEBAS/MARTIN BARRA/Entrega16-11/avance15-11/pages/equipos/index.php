@@ -93,6 +93,8 @@ $result = mysqli_query($connection, $query);
 
 
 
+<a href="index.php?p=reportes/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        class="fa-solid fa-user me-2"></i>Reportes</a>
 
 
 
@@ -165,7 +167,7 @@ $result = mysqli_query($connection, $query);
                         </script>
                     <?php endif; ?>
 
-                    <a href="pages/equipos/reporte.php" class="btn btn-success" target="_blank"> Tabla pdf </a>
+                
                     <a class="btn btn-sm btn-danger" href="index.php?p=equipos/historial" role="button">Historial de cambios de equipo</a>
                 </div>
                 <div>
@@ -176,7 +178,7 @@ $result = mysqli_query($connection, $query);
             </div>
         </div>
         <div class="card-body table-responsive"  id="bbbb">
-            <table border = 1 cellpadding = 10 class="table table-hover tableAux" id="tablaEquipos" >
+            <table border = 1 cellpadding = 10 class="table table-hover tableAux dataTables" id="tablaEquipos" >
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>

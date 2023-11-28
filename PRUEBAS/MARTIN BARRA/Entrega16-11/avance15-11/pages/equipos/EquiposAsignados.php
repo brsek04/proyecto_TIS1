@@ -116,7 +116,7 @@ $result = mysqli_query($connection, $query);
                         </script>
                     <?php endif; ?>
 
-                    <a href="pages/equipos/reporte.php" class="btn btn-success" target="_blank"> Tabla pdf </a>
+                    
                     <a class="btn btn-sm btn-danger" href="index.php?p=equipos/historial" role="button">Historial de cambios de equipo</a>
                 </div>
                 <div>
@@ -127,11 +127,12 @@ $result = mysqli_query($connection, $query);
             </div>
         </div>
         <div class="card-body table-responsive"  id="bbbb">
-            <table border = 1 cellpadding = 10 class="table table-hover tableAux" id="tablaEquipos" >
+            <table border = 1 cellpadding = 10 class="table table-hover tableAux dataTables" id="tablaEquipos" >
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Fecha de ingreso</th>
+                        <th scope="col">Funcionario</th>
                         
                         <!--<th scope="col">idmantenedor</th>-->
                         <th scope="col">Modelo</th>
@@ -151,7 +152,7 @@ $result = mysqli_query($connection, $query);
                         <tr>
                             <th scope="row"><?= $fila['id'] ?></th>
                             <td><?= $fila['fechaIngreso'] ?></td>
-                            
+                            <td><?= $fila['funcionario'] ?></td>
                            
                             <td><?= $fila['modelo'] ?></td>
                             <td><?=$fila['nombreOpcion'] ?></td>

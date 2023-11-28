@@ -111,7 +111,7 @@ $result = mysqli_query($connection, $query);
             </div>
         </div>
         <div class="card-body table-responsive ">
-            <table class="table table-hover">
+            <table class="table table-hover " id="dataTablesTickets">
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>
@@ -130,12 +130,7 @@ $result = mysqli_query($connection, $query);
                             <td><?= $fila['tipo'] ?></td>
                             <td><?= $fila['comentario'] ?></td>
                             <td><?= $fila['estado'] ?></td>
-                            <td>
-
-
-                            
-                                
-                            </td>
+                           
                         </tr>
 
                     <?php endwhile; ?>

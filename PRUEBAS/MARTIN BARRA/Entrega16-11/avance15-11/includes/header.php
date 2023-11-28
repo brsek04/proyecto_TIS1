@@ -31,7 +31,7 @@
 <!-- data tables -->
 <script>
 $(document).ready(function(){
-	$("#tablaEquipos").DataTable({
+	$(".dataTables").DataTable({
 		"pageLength":5,
 		lengthMenu:[
 		[5,10,25,50],
@@ -39,11 +39,30 @@ $(document).ready(function(){
 
 		],
 		"language":{
-			"url": "https://cdn.datatables.net/plug-ins/1.13.1/i18n/es_ES.json"
+			"url": '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+			
 		}	
 	});
 });
 </script>
+
+<!-- data tables especifico-->
+<script>
+$(document).ready(function(){
+    $("#dataTablesTickets").DataTable({
+        "pageLength": 5,
+        lengthMenu: [
+            [5, 10, 25, 50],
+            [5, 10, 25, 50]
+        ],
+        "language": {
+            "url": '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+        },
+        "order": [[1, "desc"]] // Columna 1 (fecha) en orden descendente
+    });
+});
+</script>
+
 
 <!--  graficos  -->
 

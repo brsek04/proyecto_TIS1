@@ -110,7 +110,7 @@
             </div>
         </div>
         <div class="card-body table-responsive ">
-            <table class="table table-hover">
+            <table class="table table-hover dataTables">
                 <thead class="">
                     <tr>
                         <th scope="col">#</th>

@@ -6,7 +6,7 @@
   
 <main class="container mt-5">
     <div class="card">
-        <form action="pages/equipos/sqlpdf.php" method="POST">
+        <form action="pages/reportes/sqlpdf.php" method="POST">
             <div class="card-body">
                 <div class="row">
                 
