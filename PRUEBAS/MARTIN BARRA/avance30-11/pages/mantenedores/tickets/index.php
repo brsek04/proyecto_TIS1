@@ -15,16 +15,21 @@ $additionSuccess = isset($_SESSION['addition_success']) ? $_SESSION['addition_su
 unset($_SESSION['addition_success']);
 
 
+
+$username = $_SESSION["username"];
+
+$username = $_SESSION["username"];
+
 $query = "SELECT tickets.*, funcionarios.email AS funcionario, tipo.tipo AS tipo
 FROM tickets
 LEFT JOIN tipo ON tickets.tipo_id = tipo.id
 LEFT JOIN funcionarios ON tickets.funcionario_id = funcionarios.id
- 
-ORDER BY tickets.fecha DESC;
+WHERE tickets.funcionario_id = (SELECT id FROM funcionarios WHERE nombre = '$username')
+ORDER BY tickets.fecha DESC";
 
 
 
-";
+;
 $result = mysqli_query($connection, $query);
 ?>
 

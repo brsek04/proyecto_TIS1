@@ -32,7 +32,7 @@
             } else {
                 // Si el usuario no es admin, redirige a funcionarios.index
                 $_SESSION['username'] = $username;
-                echo "<script>window.location.href='index.php?p=funcionarios/index';</script>";
+                echo "<script>window.location.href='index.php?p=auth/profile';</script>";
                 exit();
             }
         } else {

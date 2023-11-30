@@ -1,3 +1,7 @@
+<?php
+INCLUDE ('pages/auth/denegaciones.php');
+?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 
                     <h2 class="fs-2 mx-4 text-white">Reportes</h2>

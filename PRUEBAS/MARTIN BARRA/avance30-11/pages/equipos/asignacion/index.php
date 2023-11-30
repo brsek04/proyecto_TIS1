@@ -1,5 +1,5 @@
 <?php ob_start();
-
+INCLUDE ('pages/auth/denegaciones.php');
 include("database/connection.php");  // Incluye la conexión
 include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
 

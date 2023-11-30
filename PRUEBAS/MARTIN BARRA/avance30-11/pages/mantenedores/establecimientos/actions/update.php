@@ -1,13 +1,13 @@
 <?php
-    include("../../../../database/connection.php");
-    
-    $opcion = $_POST["opcion"];
-    
-    $id= $_POST["id"];
-    
-    $query = "UPDATE establecimientos SET establecimiento = '$opcion' WHERE id = ".$id.";";
+include("../../../../database/connection.php");
 
-    $result =  mysqli_query($connection, $query);
+$opcion = $_POST["opcion"];
+$comuna = $_POST["comuna"];
+$id = $_POST["id"];
 
-    header("Location: ../../../../index.php?p=mantenedores/establecimientos/index");
-?>  
+$query = "UPDATE establecimientos SET establecimiento = '$opcion', comuna_id = $comuna WHERE id = " . $id . ";";
+
+$result = mysqli_query($connection, $query);
+
+header("Location: ../../../../index.php?p=mantenedores/establecimientos/index");
+?>
