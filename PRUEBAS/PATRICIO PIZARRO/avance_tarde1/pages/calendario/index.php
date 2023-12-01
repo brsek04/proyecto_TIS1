@@ -29,17 +29,16 @@ unset($_SESSION['mantencion_success']);
 <?php endif; ?>
 
             
-<h2 class="container text-center ">
+<h2 class="container col-lg-8 text-center text-bg-dark">
     Mantenciones
     <button id="generarPdf" class="btn btn-sm btn-outline-light text-center ">Generar PDF </button>
 </h2>
 
-<div class="container-fluid text-bg-dark">
+<div class="container-fluid ">
     <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+        <div class="col-lg-2 "></div>
+        <div class="col-lg-8 text-bg-dark">
             <div id="calendar"></div>
-            
         </div>
         <div class="col-lg-2"></div>
     </div>

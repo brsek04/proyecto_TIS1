@@ -42,11 +42,7 @@ GROUP BY funcionarios.id;";
 
 $result2 = mysqli_query($connection, $query2);
 
-
-
-
 ?>
-
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
@@ -59,186 +55,189 @@ $result2 = mysqli_query($connection, $query2);
     </button>
 </nav>
 
-<div class="container mx-5" id="aaaa">
-    <div class="row" id="contenedortabla">
-        <div class="card text-bg-dark">
-            <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="text-center">
-                        <?php if ($deletionSuccess): ?>
-                            <script>
-                                Swal.fire({
-                                    title: 'Eliminación exitosa',
-                                    icon: 'success',
-                                    confirmButtonColor: '#28a745',
-                                });
-                            </script>
-                        <?php endif; ?>
-                        <?php if ($additionSuccess): ?>
-                            <script>
-                                Swal.fire({
-                                    title: 'Registro exitoso',
-                                    icon: 'success',
-                                    confirmButtonColor: '#28a745',
-                                });
-                            </script>
-                        <?php endif; ?>
+<div>
+    <div class="container mx-5 " id="aaaa">
+        <div class="row col-lg-8" id="contenedortabla">
+            <div class="card text-bg-dark">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-center">
+                            <?php if ($deletionSuccess): ?>
+                                <script>
+                                    Swal.fire({
+                                        title: 'Eliminación exitosa',
+                                        icon: 'success',
+                                        confirmButtonColor: '#28a745',
+                                    });
+                                </script>
+                            <?php endif; ?>
+                            <?php if ($additionSuccess): ?>
+                                <script>
+                                    Swal.fire({
+                                        title: 'Registro exitoso',
+                                        icon: 'success',
+                                        confirmButtonColor: '#28a745',
+                                    });
+                                </script>
+                            <?php endif; ?>
 
 
-                    </div>
-                    <div>
+                        </div>
+                        <div>
+                        </div>
                     </div>
                 </div>
+
+
+                <div class="card-body table-responsive text-bg-dark " id="bbbb">
+                    <table cellpadding=10
+                        class="table table-hover table-dark table-striped tableAux dataTablesScroll table-borderless"
+                        id="">
+                        <thead class="">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col"> Tipo</th>
+                                <th scope="col"> Marca</th>
+
+                                <th scope="col"> Modelo</th>
+
+                                <th scope="col"> Memoria</th>
+
+
+
+                                <th scope="col"> Almacenamiento</th>
+
+
+                                <!--<th scope="col">idmantenedor</th>-->
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($fila = mysqli_fetch_array($result)): ?>
+                                <tr>
+                                    <th scope="row">
+                                        <?= $fila['id'] ?>
+                                    </th>
+
+                                    <td>
+                                        <?= $fila['nombreOpcion'] ?>
+                                    </td>
+
+                                    <td>
+                                        <?= $fila['marcas'] ?>
+                                    </td>
+                                    <td>
+                                        <?= $fila['modelo'] ?>
+                                    </td>
+
+                                    <td>
+                                        <?= $fila['memorias'] ?> GB
+                                    </td>
+
+                                    <td>
+                                        <?= $fila['almacenamientos'] ?> GB
+                                        <button class="btn float-end text-white border-white btn-marcar-equipo"
+                                            data-id="<?= $fila['id'] ?>">Marcar</button>
+
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
 
 
-            <div class="card-body table-responsive text-bg-dark" id="bbbb">
-                <table cellpadding=10
-                    class="table table-hover table-dark table-striped tableAux dataTablesScroll table-borderless" id="">
-                    <thead class="">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col"> Tipo</th>
-                            <th scope="col"> Marca</th>
+        </div>
+    </div>
 
-                            <th scope="col"> Modelo</th>
 
-                            <th scope="col"> Memoria</th>
+    <br>
 
 
 
-                            <th scope="col"> Almacenamiento</th>
+    <main class="container mx-5 ">
 
+        <div class="row " id="contenedortabla">
+            <div class="card text-bg-dark ">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="text-center">
+                            <?php if ($deletionSuccess): ?>
+                                <script>
+                                    Swal.fire({
+                                        title: 'Eliminación exitosa',
+                                        icon: 'success',
+                                        confirmButtonColor: '#28a745',
+                                    });
+                                </script>
+                            <?php endif; ?>
+                            <?php if ($additionSuccess): ?>
+                                <script>
+                                    Swal.fire({
+                                        title: 'Registro exitoso',
+                                        icon: 'success',
+                                        confirmButtonColor: '#28a745',
+                                    });
+                                </script>
+                            <?php endif; ?>
+                        </div>
+                        <div>
 
-                            <!--<th scope="col">idmantenedor</th>-->
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($fila = mysqli_fetch_array($result)): ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body table-responsive  text-bg-dark">
+                    <table
+                        class="table table-hover table-dark table-striped tableAux dataTablesScroll table-borderless">
+                        <thead class="">
                             <tr>
-                                <th scope="row">
-                                    <?= $fila['id'] ?>
-                                </th>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
 
-                                <td>
-                                    <?= $fila['nombreOpcion'] ?>
-                                </td>
+                                <th scope="col">Correo electronico</th>
 
-                                <td>
-                                    <?= $fila['marcas'] ?>
-                                </td>
-                                <td>
-                                    <?= $fila['modelo'] ?>
-                                </td>
-
-                                <td>
-                                    <?= $fila['memorias'] ?> GB
-                                </td>
-
-                                <td>
-                                    <?= $fila['almacenamientos'] ?> GB
-                                    <button class="btn float-end text-white border-white btn-marcar-equipo"
-                                        data-id="<?= $fila['id'] ?>">Marcar</button>
+                                <th scope="col">Departamento</th>
 
                             </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php while ($fila = mysqli_fetch_array($result2)): ?>
+                                <tr>
+                                    <th scope="row">
+                                        <?= $fila['id'] ?>
+                                    </th>
 
+                                    <td>
+                                        <?= $fila['nombre'] ?>
+                                    </td>
+
+                                    <td>
+                                        <?= $fila['email'] ?>
+                                    </td>
+
+                                    <td>
+                                        <?= $fila['departamento'] ?>
+                                        <button class="btn float-end text-white border-white btn-marcar-funcionario"
+                                            data-id="<?= $fila['id'] ?>">Marcar</button>
+
+                                </tr>
+
+                            <?php endwhile; ?>
+                        </tbody>
+                        <div class="text-center">
+
+
+                    </table>
+                    <button class="btn btn-sm text-white btn-outline-primary border border-light"
+                        id="btnAsignar">Asignar</button>
+                </div>
+                <br>
             </div>
 
         </div>
-
-
-    </div>
 </div>
-
-
-<br>
-
-
-
-<main class="container mx-5">
-
-    <div class="row" id="contenedortabla">
-        <div class="card text-bg-dark">
-            <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="text-center">
-                        <?php if ($deletionSuccess): ?>
-                            <script>
-                                Swal.fire({
-                                    title: 'Eliminación exitosa',
-                                    icon: 'success',
-                                    confirmButtonColor: '#28a745',
-                                });
-                            </script>
-                        <?php endif; ?>
-                        <?php if ($additionSuccess): ?>
-                            <script>
-                                Swal.fire({
-                                    title: 'Registro exitoso',
-                                    icon: 'success',
-                                    confirmButtonColor: '#28a745',
-                                });
-                            </script>
-                        <?php endif; ?>
-                    </div>
-                    <div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="card-body table-responsive  text-bg-dark">
-                <table class="table table-hover table-dark table-striped tableAux dataTablesScroll table-borderless">
-                    <thead class="">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-
-                            <th scope="col">Correo electronico</th>
-
-                            <th scope="col">Departamento</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php while ($fila = mysqli_fetch_array($result2)): ?>
-                            <tr>
-                                <th scope="row">
-                                    <?= $fila['id'] ?>
-                                </th>
-
-                                <td>
-                                    <?= $fila['nombre'] ?>
-                                </td>
-
-                                <td>
-                                    <?= $fila['email'] ?>
-                                </td>
-
-                                <td>
-                                    <?= $fila['departamento'] ?>
-                                    <button class="btn float-end text-white border-white btn-marcar-funcionario"
-                                        data-id="<?= $fila['id'] ?>">Marcar</button>
-
-                            </tr>
-
-                        <?php endwhile; ?>
-                    </tbody>
-                    <div class="text-center">
-
-
-                </table>
-                <button class="btn btn-sm text-white btn-outline-primary border border-light"
-                    id="btnAsignar">Asignar</button>
-            </div>
-            <br>
-        </div>
-
-    </div>
-    </div>
 </main>
 
 
