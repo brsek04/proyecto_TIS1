@@ -1,0 +1,72 @@
+<?php
+    require('database/connection.php');
+   
+
+    if (isset($_POST['username'])) {
+        
+        $_SESSION['sesionsuccess'] = true;
+
+        $_SESSION['sesionid'] = true;
+      $username = $_POST["username"];
+        $contrasena = $_POST["contrasena"];
+
+        //Checking is user existing in the database or not
+        $query = "SELECT * FROM `users` WHERE username='$username' and contrasena='$contrasena'";
+
+        $result = mysqli_query($connection, $query);
+
+        if (!$result) {
+            die("Query failed: " . mysqli_error($connection));
+        }
+
+        $user = mysqli_num_rows($result);
+        
+        if ($user > 0) {
+            $row = mysqli_fetch_assoc($result);
+        
+            if ($row['rol'] == 'admin') {
+                // Si el usuario es un admin, redirige a home
+                $_SESSION['username'] = $username;
+                echo "<script>window.location.href='index.php?p=home';</script>";
+                exit();
+            } else {
+                // Si el usuario no es admin, redirige a funcionarios.index
+                $_SESSION['username'] = $username;
+                echo "<script>window.location.href='index.php?p=funcionarios/index';</script>";
+                exit();
+            }
+        } else {
+            echo "<div class='form'><h3>Usuario/Contraseña Incorrecto</h3><br/>Haz click aquí para <a href='index.php?p=auth/login'>Logearte</a></div>";
+        }
+    } else {
+        ?>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h1 class="text-center">Inicia Sesión</h1>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="post" name="login">
+                                <div class="form-group mb-3">
+                                    <label for="username">Usuario</label>
+                                    <input type="text" name="username" class="form-control" placeholder="Ingresa tu usuario" required />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="contrasena">Contraseña</label>
+                                    <input type="password" name="contrasena" class="form-control" placeholder="Ingresa tu contraseña" required />
+                                </div>
+                                <div class="form-group">
+                                    <button name="submit" type="submit" class="btn btn-primary btn-block">Entrar</button>
+                                </div>
+                            </form>
+                            <p class="text-center">¿No estás registrado aún? <a href='index.php?p=auth/register'>Regístrate aquí</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+    } 
+?>
