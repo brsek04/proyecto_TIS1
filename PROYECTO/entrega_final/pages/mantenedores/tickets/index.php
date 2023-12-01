@@ -1,32 +1,39 @@
-<?php
+<?php ob_start();
 include("database/connection.php");  // Incluye la conexión
 include("database/auth.php");  // Comprueba si el usuario está logueado, sino lo redirige al login
-
-$query = "SELECT funcionarios.*, establecimientos.establecimiento AS establecimiento, departamentos.departamento AS departamento
-    FROM funcionarios
-    LEFT JOIN establecimientos ON funcionarios.establecimiento_id = establecimientos.id
-    LEFT JOIN departamentos ON funcionarios.departamento_id = departamentos.id;
-    ";
-
-$result = mysqli_query($connection, $query);
-
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+$sesion = $_SESSION["username"];
 
 $deletionSuccess = isset($_SESSION['deletion_success']) ? $_SESSION['deletion_success'] : false;
-
 unset($_SESSION['deletion_success']);
+
 $additionSuccess = isset($_SESSION['addition_success']) ? $_SESSION['addition_success'] : false;
 unset($_SESSION['addition_success']);
 
-?>
 
+
+
+$username = $_SESSION["username"];
+
+$query = "SELECT tickets.*, funcionarios.email AS funcionario, tipo.tipo AS tipo
+FROM tickets
+LEFT JOIN tipo ON tickets.tipo_id = tipo.id
+LEFT JOIN funcionarios ON tickets.funcionario_id = funcionarios.id
+WHERE tickets.funcionario_id = (SELECT id FROM funcionarios WHERE nombre = '$username')
+ORDER BY tickets.fecha DESC";
+
+
+
+;
+$result = mysqli_query($connection, $query);
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
 
-    <h2 class="fs-2 mx-4 text-white">Funcionarios</h2>
+    <h2 class="fs-2 mx-4 text-white">Tickets</h2>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +60,7 @@ unset($_SESSION['addition_success']);
                         <?php if ($additionSuccess): ?>
                             <script>
                                 Swal.fire({
-                                    title: 'Registro exitoso',
+                                    title: 'Solicitud enviada',
                                     icon: 'success',
                                     confirmButtonColor: '#28a745',
                                 });
@@ -61,21 +68,20 @@ unset($_SESSION['addition_success']);
                         <?php endif; ?>
                     </div>
                     <div>
-
+                        <a class="btn btn-sm text-white btn-outline-success border border-light"
+                            href="index.php?p=mantenedores/tickets/create" role="button">Agregar nuevo</a>
                     </div>
                 </div>
             </div>
             <div class="card-body table-responsive text-bg-dark">
-                <table class="table table-hover table-dark table-striped tableAux dataTables table-borderless">
+                <table class="table table-hover table-dark " id="dataTablesTickets">
                     <thead class="">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Correo electronico</th>
-                            <th scope="col">Establecimiento</th>
-                            <th scope="col">Departamento</th>
-
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Comentario</th>
+                            <th scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -85,19 +91,17 @@ unset($_SESSION['addition_success']);
                                     <?= $fila['id'] ?>
                                 </th>
                                 <td>
-                                    <?= $fila['nombre'] ?>
+                                    <?= $fila['fecha'] ?>
                                 </td>
                                 <td>
-                                    <?= $fila['apellido'] ?>
+                                    <?= $fila['tipo'] ?>
                                 </td>
+                                <td data-bs-toggle="popover"
+                                        data-bs-content="<?= htmlspecialchars($fila['comentario']) ?>">
+                                        <?= strlen($fila['comentario']) > 50 ? htmlspecialchars(substr($fila['comentario'], 0, 50)) . '...' : htmlspecialchars($fila['comentario']) ?>
+                                    </td>
                                 <td>
-                                    <?= $fila['email'] ?>
-                                </td>
-                                <td>
-                                    <?= $fila['establecimiento'] ?>
-                                </td>
-                                <td>
-                                    <?= $fila['departamento'] ?>
+                                    <?= $fila['estado'] ?>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
@@ -118,9 +122,21 @@ unset($_SESSION['addition_success']);
             confirmButtonColor: '#dc3545',
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location = "pages/mantenedores/funcionarios/actions/delete.php?id=" + id;
+                window.location = "pages/mantenedores/tickets/actions/delete.php?id=" + id;
 
             }
         });
     }
 </script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl, {
+                    trigger: 'hover',
+                    html: true
+                });
+            });
+        });
+    </script>

@@ -74,7 +74,7 @@ $result2 = mysqli_query($connection, $query2);
                             <?php if ($additionSuccess): ?>
                                 <script>
                                     Swal.fire({
-                                        title: 'Registro exitoso',
+                                        title: 'Asignación exitosa',
                                         icon: 'success',
                                         confirmButtonColor: '#28a745',
                                     });
@@ -157,7 +157,7 @@ $result2 = mysqli_query($connection, $query2);
                             <?php if ($additionSuccess): ?>
                                 <script>
                                     Swal.fire({
-                                        title: 'Registro exitoso',
+                                        title: 'Asignación exitosa',
                                         icon: 'success',
                                         confirmButtonColor: '#28a745',
                                     });

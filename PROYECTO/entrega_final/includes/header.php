@@ -159,7 +159,7 @@ if (isset($_SESSION["username"])) {
 
 
 
-
+<!-- sidebar de admin -->
   <?php
   if (isset($_SESSION["username"])) {
 
@@ -183,7 +183,7 @@ if (isset($_SESSION["username"])) {
                 <button
                   class=" btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold dropdown-toggle"
                   data-bs-toggle="collapse" data-bs-target="#equipo-collapse" aria-expanded="false">
-                  <i class="bi bi-pc-display me-2"></i>Equipo
+                  <i class="bi bi-pc-display me-2"></i>Equipos
                 </button>
 
                 <div class="collapse " id="equipo-collapse" style="">
@@ -211,7 +211,7 @@ if (isset($_SESSION["username"])) {
                   <button
                     class="btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
                     data-bs-toggle="collapse" data-bs-target="#funcionario-collapse" aria-expanded="false">
-                    <i class="bi bi-person me-2"></i>Funcionario
+                    <i class="bi bi-person me-2"></i>Funcionarios
                   </button>
                   <div class="collapse" id="funcionario-collapse" style="">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -301,7 +301,7 @@ if (isset($_SESSION["username"])) {
 
   ?>
 
-
+<!-- sidebar de funcionario -->
     <?php
 
     if (isset($_SESSION["username"])) {
@@ -324,7 +324,7 @@ if (isset($_SESSION["username"])) {
                 class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="bi bi-archive me-2"></i>Tus tickets</a>
 
-              <li class="border-top "></li>
+              <hr>
               <a class=" list-group-item list-group-item-action bg-transparent nav-link second-text fw-bold"
                 href="index.php?p=auth/profile" id="navbarDropdown" role="button" aria-expanded="false">
                 <img src="https://i.imgflip.com/6x7zre.jpg" alt="" width="32" height="32" class="rounded-circle me-2">

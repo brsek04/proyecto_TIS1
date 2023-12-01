@@ -5,7 +5,8 @@ include("database/auth.php");  // Comprueba si el usuario está logueado, sino l
 $query = "SELECT funcionarios.*, establecimientos.establecimiento AS establecimiento, departamentos.departamento AS departamento
     FROM funcionarios
     LEFT JOIN establecimientos ON funcionarios.establecimiento_id = establecimientos.id
-    LEFT JOIN departamentos ON funcionarios.departamento_id = departamentos.id;
+    LEFT JOIN departamentos ON funcionarios.departamento_id = departamentos.id
+    where funcionarios.nombre != 'no asignado';
     ";
 
 $result = mysqli_query($connection, $query);

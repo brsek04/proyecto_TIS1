@@ -33,7 +33,7 @@ $result = mysqli_query($connection, $query);
 
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 
-                    <h2 class="fs-2 mx-4 text-white">Equipos</h2>
+                    <h2 class="fs-2 mx-4 text-white">Panel de equipos</h2>
                     
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

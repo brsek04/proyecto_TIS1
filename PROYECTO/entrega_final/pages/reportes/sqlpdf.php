@@ -44,7 +44,7 @@ class PDF extends FPDF
             if ($this->mostrarFuncionarios) {
                 $this->Ln(5);
                 $this->SetFont('Arial', 'B', 12);
-                $this->Cell(0, 10, 'Información de Funcionarios', 0, 1, 'L');
+                $this->Cell(0, 10, 'INFORMACION DE FUNCIONARIOS', 0, 1, 'L');
                 $this->SetFont('Arial', '', 10);
 
                 // Obtener la cantidad de equipos por funcionario
@@ -73,7 +73,7 @@ class PDF extends FPDF
             if (isset($_POST["tipoCheckbox"])) {
                 $this->Ln(5);
                 $this->SetFont('Arial', 'B', 12);
-                $this->Cell(0, 10, 'Información de Tipos', 0, 1, 'L');
+                $this->Cell(0, 10, 'INFORMACION DE TIPOS', 0, 1, 'L');
                 $this->SetFont('Arial', '', 10);
 
                 // Obtener la cantidad de equipos por tipo
@@ -96,7 +96,7 @@ class PDF extends FPDF
             if (isset($_POST["marcaCheckbox"])) {
                 $this->Ln(5);
                 $this->SetFont('Arial', 'B', 12);
-                $this->Cell(0, 10, 'Información de Marcas', 0, 1, 'L');
+                $this->Cell(0, 10, 'INFORMACION DE MARCAS', 0, 1, 'L');
                 $this->SetFont('Arial', '', 10);
 
                 // Obtener la cantidad de equipos por marca
@@ -118,7 +118,7 @@ class PDF extends FPDF
             if (isset($_POST["formaIngresoCheckbox"])) {
                 $this->Ln(5);
                 $this->SetFont('Arial', 'B', 12);
-                $this->Cell(0, 10, 'Información de Formas de Ingreso', 0, 1, 'L');
+                $this->Cell(0, 10, 'INFORMACION DE FORMAS DE INGRESO', 0, 1, 'L');
                 $this->SetFont('Arial', '', 10);
 
                 // Obtener la cantidad de equipos por forma de ingreso
