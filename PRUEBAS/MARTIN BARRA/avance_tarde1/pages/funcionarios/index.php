@@ -36,26 +36,7 @@ unset($_SESSION['addition_success']);
 
  
 
-// Consulta para obtener la contraseña del usuario
-$queryPassword = "SELECT id, contrasena FROM users WHERE username = '$username'";
-$resultPassword = mysqli_query($connection, $queryPassword);
 
-// Verificar si la contraseña es igual al nombre de usuario + "123"
-if ($resultPassword) {
-    $row = mysqli_fetch_assoc($resultPassword);
-    $userPassword = $row['contrasena'];
-
-    if ($userPassword == $username . "123") {
-        
-        $userId = $row['id'];
-
-        // Redirige a la página de edición con el ID
-        echo "<script>window.location.href='index.php?p=funcionarios/edit&id=$userId';</script>";
-        exit();
-    }
-} else {
-    echo "Error en la consulta de la contraseña: " . mysqli_error($connection);
-}
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">

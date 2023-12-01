@@ -17,5 +17,5 @@
         $_SESSION['addition_success'] = true;
     }
 
-    header("Location: ../../index.php?p=funcionarios/index");
+    header("Location: ../../index.php?p=auth/profile");
 ?>  
