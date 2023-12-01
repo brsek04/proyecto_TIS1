@@ -40,20 +40,22 @@
         }
     } else {
         ?>
-        <div class="container-flex ">
-        <div class="row m-5">
 
-            <div id="contenedorizquierda" class="col-lg-6 text-bg-dark">
-                <img id="fotox" class=" mx-auto " src="" alt="">
+        <div class="contenedorprincipal text-bg-dark">
+        <div class="container text-center">
+        <div class="row m-5 align-items-center">
 
+            <div id="contenedorizquierda"  class="col-lg-6 text-bg-dark align-self-center " style="padding-top:25%;">
+                <img  class="  " src="logo-inventrack.png" width="80%">
+                <p class="  "> Inventario claro, rendimiento elevado.</p>
             </div>
 
-            <div id="contenedorderecha" class="col-lg-6 text-bg-dark  ">
+            <div id="contenedorderecha" class="col-lg-6 text-bg-dark"  style="padding-top:25%;">
 
                 <form action="" method="post" name="login">
                     <div class="form-group mb-3">
                         <label for="username">Usuario</label>
-                        <input type="text" name="username" class="form-control text-bg-dark" placeholder="Ingresa tu usuario" required />
+                        <input type="text" name="username" class="form-control text-bg-dark " placeholder="Ingresa tu usuario" required />
                     </div>
                     <div class="form-group mb-3">
                         <label for="password">Contraseña</label>
@@ -66,8 +68,12 @@
                 </form>
 
             </div>
+            </div>
         </div>
     </div>
+
+
+    
     <?php
     } 
 ?>

@@ -1,4 +1,3 @@
-
 <?php
 
 $sesionid = isset($_SESSION['sesionid']) ? $_SESSION['sesionid'] : true;
@@ -6,28 +5,28 @@ unset($_SESSION['sesionid']);
 
 
 
-if(isset($_SESSION["username"])){
+if (isset($_SESSION["username"])) {
 
 
 
 
-require('database/connection.php');
+  require('database/connection.php');
 
 
-$sesion = $_SESSION["username"];
-$datos = mysqli_query($connection, "SELECT * from users where username = '$sesion'");
+  $sesion = $_SESSION["username"];
+  $datos = mysqli_query($connection, "SELECT * from users where username = '$sesion'");
 
-while($consulta = mysqli_fetch_array($datos)){
+  while ($consulta = mysqli_fetch_array($datos)) {
     $rol = $consulta['rol'];
+  }
+
+  if ($rol == 'funcionario') {
+
+
+  }
+
+
 }
-
-if($rol=='funcionario'){
-    
-
-}
-
-
-} 
 ?>
 
 
@@ -156,183 +155,167 @@ if($rol=='funcionario'){
 
 
 
-<?php
-if(isset($_SESSION["username"])){
+  <?php
+  if (isset($_SESSION["username"])) {
 
-if($rol=='admin'){
-    
-
- 
+    if ($rol == 'admin') {
 
 
-  
-
-?>
+      ?>
 
 
-  <div class="offcanvas-start d-flex" id="wrapper">
-    <div class="" id="sidebar-wrapper">
-      <li class="nav-item row align-items-start">
-        <a class="nav-link " aria-current="page"> 
-        <img class="p-0 m-3" src="logo-inventrack.png" alt="" width="240"></a>
-      </li>
-
-      <div class="list-group list-group-flush my-3">
-        <a href="index.php?p=home" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-            class="bi bi-house me-2"></i>Inicio</a>
-
-
-        <!-- Dropdown menu links -->
-        <ul class="list-unstyled ps-0">
-          <li class="mb-1">
-            <button
-              class=" btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold dropdown-toggle"
-              data-bs-toggle="collapse" data-bs-target="#equipo-collapse" aria-expanded="false">
-              <i class="bi bi-pc-display me-2"></i>Equipo
-            </button>
-
-            <div class="collapse " id="equipo-collapse" style="">
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ">
-                <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                    href="index.php?p=equipos/index"> <i class="bi bi-arrow-return-right me-1"></i>Todos los
-                    equipos</a>
-                </li>
-                <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold "
-                    href="index.php?p=equipos/equiposDisponibles"> <i class="bi bi-arrow-return-right me-1"></i>Equipos
-                    disponibles</a></li>
-                <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                    href="index.php?p=equipos/equiposAsignados"> <i class="bi bi-arrow-return-right me-1"></i>Equipos
-                    asignados</a></li>
-              </ul>
-            </div>
+      <div class="offcanvas-start d-flex" id="wrapper">
+        <div class="" id="sidebar-wrapper">
+          <li class="nav-item row align-items-start">
+            <a class="nav-link " aria-current="page">
+              <img class="p-0 m-3" src="logo-inventrack.png" alt="" width="240"></a>
           </li>
 
-
-          <ul class="list-unstyled ps-0">
-            <li class="mb-1">
-              <button
-                class="btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                data-bs-toggle="collapse" data-bs-target="#funcionario-collapse" aria-expanded="false">
-                <i class="bi bi-person me-2"></i>Funcionario
-              </button>
-              <div class="collapse" id="funcionario-collapse" style="">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                      href="index.php?p=mantenedores/funcionarios/index"><i
-                        class="bi bi-arrow-return-right me-1"></i>Todos los funcionarios</a></li>
-                  <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                      href="index.php?p=mantenedores/funcionarios/funcionariosAsignados"><i
-                        class="bi bi-arrow-return-right me-1"></i>Funcionarios asignados</a></li>
-                </ul>
-              </div>
-            </li>
+          <div class="list-group list-group-flush my-3">
+            <a href="index.php?p=home" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                class="bi bi-house me-2"></i>Inicio</a>
 
 
+            <!-- Dropdown menu links -->
             <ul class="list-unstyled ps-0">
               <li class="mb-1">
                 <button
-                  class="btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                  data-bs-toggle="collapse" data-bs-target="#asignacion-collapse" aria-expanded="false">
-                  <i class="bi bi-person-fill-down me-2"></i> Asignación
+                  class=" btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold dropdown-toggle"
+                  data-bs-toggle="collapse" data-bs-target="#equipo-collapse" aria-expanded="false">
+                  <i class="bi bi-pc-display me-2"></i>Equipo
                 </button>
-                <div class="collapse" id="asignacion-collapse" style="">
-                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a
-                        class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                        href="index.php?p=equipos/asignacion/index"><i
-                          class="bi bi-arrow-return-right me-1"></i>Asignar</a></li>
-                    <li><a
-                        class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
-                        href="index.php?p=mantenedores/funcionarios/EditarAsignacion"><i
-                          class="bi bi-arrow-return-right me-1"></i>Editar</a></li>
+
+                <div class="collapse " id="equipo-collapse" style="">
+                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ">
+                    <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                        href="index.php?p=equipos/index"> <i class="bi bi-arrow-return-right me-1"></i>Todos los
+                        equipos</a>
+                    </li>
+                    <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold "
+                        href="index.php?p=equipos/equiposDisponibles"> <i class="bi bi-arrow-return-right me-1"></i>Equipos
+                        disponibles</a></li>
+                    <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                        href="index.php?p=equipos/equiposAsignados"> <i class="bi bi-arrow-return-right me-1"></i>Equipos
+                        asignados</a></li>
                   </ul>
                 </div>
               </li>
 
-              <a href="index.php?p=equipos/historial"
+
+              <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                  <button
+                    class="btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                    data-bs-toggle="collapse" data-bs-target="#funcionario-collapse" aria-expanded="false">
+                    <i class="bi bi-person me-2"></i>Funcionario
+                  </button>
+                  <div class="collapse" id="funcionario-collapse" style="">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                          href="index.php?p=mantenedores/funcionarios/index"><i
+                            class="bi bi-arrow-return-right me-1"></i>Todos los funcionarios</a></li>
+                      <li><a class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                          href="index.php?p=mantenedores/funcionarios/funcionariosAsignados"><i
+                            class="bi bi-arrow-return-right me-1"></i>Funcionarios asignados</a></li>
+                    </ul>
+                  </div>
+                </li>
+
+
+                <ul class="list-unstyled ps-0">
+                  <li class="mb-1">
+                    <button
+                      class="btn dropdown-toggle btn-toggle d-inline-flex align-items-center rounded border-0 collapsed list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                      data-bs-toggle="collapse" data-bs-target="#asignacion-collapse" aria-expanded="false">
+                      <i class="bi bi-person-fill-down me-2"></i> Asignación
+                    </button>
+                    <div class="collapse" id="asignacion-collapse" style="">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a
+                            class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                            href="index.php?p=equipos/asignacion/index"><i
+                              class="bi bi-arrow-return-right me-1"></i>Asignar</a></li>
+                        <li><a
+                            class="dropdown-item list-group-item list-group-item-action bg-transparent second-text fw-bold"
+                            href="index.php?p=mantenedores/funcionarios/EditarAsignacion"><i
+                              class="bi bi-arrow-return-right me-1"></i>Editar</a></li>
+                      </ul>
+                    </div>
+                  </li>
+
+                  <a href="index.php?p=equipos/historial"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                      class="bi bi-pin-map me-2"></i>Trazabilidad</a>
+
+                  <a href="index.php?p=reportes/index"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="bi bi-file-earmark-arrow-down-fill me-2"></i>Reportes</a>
+
+
+
+                  <a href="index.php?p=users/index"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                      class="fa-solid fa-user me-2"></i>Usuarios</a>
+
+                  <a href="index.php?p=mantenedores/index"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                      class="bi bi-box me-2"></i>Mantenedores</a>
+
+                  <a href="index.php?p=calendario/index"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="bi bi-calendar-date me-2"></i>Calendario</a>
+
+                  <a href="index.php?p=equipos/indexTickets"
+                    class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <i class="bi bi-archive me-2"></i>Tickets</a>
+
+
+                  <br><br><br><br>
+                  <li class="border-top "></li>
+                  <a class=" list-group-item list-group-item-action bg-transparent nav-link second-text fw-bold"
+                    href="index.php?p=auth/profile" id="navbarDropdown" role="button" aria-expanded="false">
+                    <img src="https://i.imgflip.com/6x7zre.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <?php echo $_SESSION['username'] ?? null ?>
+                  </a>
+
+                  <a href="pages/auth/actions/logout.php"
+                    class="list-group-item list-group-item-action bg-transparent text-danger fw-bold "><i
+                      class="fas fa-power-off me-2"></i>Salir</a>
+
+          </div>
+        </div>
+        </head>
+
+
+        <?php
+    }
+  }
+
+  ?>
+
+
+
+    <?php
+    if (isset($_SESSION["username"])) {
+      if ($rol == 'funcionario') {
+
+        ?>
+
+        <div class="offcanvas-start d-flex" id="wrapper">
+          <div class="" id="sidebar-wrapper">
+            <li class="nav-item row align-items-start">
+              <a class="nav-link" aria-current="page"><img class="p-0 m-3" src="logo-inventrack.png" alt="" width="240"></a>
+            </li>
+
+            <div class="list-group list-group-flush my-3">
+              <a href="index.php?p=funcionarios/index"
                 class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                  class="bi bi-pin-map me-2"></i>Trazabilidad</a>
-
-              <a href="index.php?p=reportes/index"
-                class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                <i class="bi bi-file-earmark-arrow-down-fill me-2"></i>Reportes</a>
+                  class="bi bi-house me-2"></i>Tus equipos</a>
 
 
-
-              <a href="index.php?p=users/index"
-                class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                  class="fa-solid fa-user me-2"></i>Usuarios</a>
-
-              <a href="index.php?p=mantenedores/index"
-                class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-                  class="bi bi-box me-2"></i>Mantenedores</a>
-
-              <a href="index.php?p=calendario/index"
-                class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                <i class="bi bi-calendar-date me-2"></i>Calendario</a>
-
-              <a href="index.php?p=equipos/indexTickets"
-                class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-                <i class="bi bi-archive me-2"></i>Tickets</a>
+              <!-- Dropdown menu links -->
 
 
-              <br><br><br><br>
-              <li class="border-top "></li>
-              <a class=" list-group-item list-group-item-action bg-transparent nav-link second-text fw-bold"
-                href="index.php?p=auth/profile" id="navbarDropdown" role="button" aria-expanded="false">
-                <img src="https://i.imgflip.com/6x7zre.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-                <?php echo $_SESSION['username'] ?? null ?>
-              </a>
-
-              <a href="pages/auth/actions/logout.php"
-                class="list-group-item list-group-item-action bg-transparent text-danger fw-bold "><i
-                  class="fas fa-power-off me-2"></i>Salir</a>
-
-      </div>
-    </div> 
-    </head>
-
-
-<?php
-}
-}
-
-
-?>
-
-
-
-<?php
-
-
-if(isset($_SESSION["username"])){
-if($rol=='funcionario'){
-
-?>
-
-<div class="offcanvas-start d-flex" id="wrapper">
-    <div class="" id="sidebar-wrapper">
-      <li class="nav-item row align-items-start">
-        <a class="nav-link" aria-current="page"><img class="p-0 m-3" src="logo-inventrack.png" alt="" width="240"></a>
-      </li>
-
-      <div class="list-group list-group-flush my-3">
-        <a href="index.php?p=funcionarios/index" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
-            class="bi bi-house me-2"></i>Tus equipos</a>
-
-
-        <!-- Dropdown menu links -->
-        
-
-         
-
-
-
-
-
-              
-
-          
               <a href="index.php?p=mantenedores/tickets/index"
                 class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                 <i class="bi bi-archive me-2"></i>Tus tickets</a>
@@ -353,9 +336,9 @@ if($rol=='funcionario'){
 
 
 
-      </div>
-    </div> 
-    </head>
+            </div>
+          </div>
+          </head>
 
 
 
@@ -363,11 +346,8 @@ if($rol=='funcionario'){
 
 
 
-<?php
-}}
-?>
-    <div class="min-vh-100">
-      
-
-
-
+          <?php
+      }
+    }
+    ?>
+      <div class=" row min-vh-100 ">
