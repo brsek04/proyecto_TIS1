@@ -89,7 +89,7 @@ unset($_SESSION['addition_success']);
                                 <th scope="col">Ingreso</th>
                                 <th scope="col">Mantencion</th>
                                 <th scope="col">Costo</th>
-                                <th scope="col">Opciones</th>
+                            
                             </tr>
                         </thead>
                         <tbody>
@@ -132,32 +132,7 @@ unset($_SESSION['addition_success']);
                                     <td>
                                         <?php echo "$" . $fila['costo'] ?>
                                     </td>
-                                    <td>
-                                        <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-                                            <a id="generarQr" data-id="<?php echo $fila['id'] ?>"
-                                                class="btn btn-sm btn-outline-light">QR</a>
-
-                                            <div class="modal fade" id="exampleModal" tabindex="-1"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class=" modal-title fs-5 text-center"
-                                                                id="exampleModalLabel">Qr para dispositivo </h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class=" contenedor">
-                                                                <div id="contenedorQR" class="contenedorQR"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </td>
+                            
                                 </tr>
                             <?php endwhile; ?>
                         </tbody>

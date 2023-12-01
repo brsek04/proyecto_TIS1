@@ -65,8 +65,6 @@ $result = mysqli_query($connection, $query);
                                     });
                                 </script>
                             <?php endif; ?>
-
-
                         </div>
                         <div>
 
@@ -189,7 +187,7 @@ $result = mysqli_query($connection, $query);
         });
     }
 
-    const link = "http://localhost/xampp/proyecto_TIS1/PRUEBAS/PATRICIO%20PIZARRO/avance_tarde1/index.php?p=equipos/busquedaQR&id="
+    const link = "http://localhost/xampp/proyecto_TIS1/PROYECTO/entrega_final/index.php?p=equipos/busquedaQR&id="
 
     // var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
 
