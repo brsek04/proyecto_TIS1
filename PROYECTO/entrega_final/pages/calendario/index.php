@@ -29,7 +29,7 @@ unset($_SESSION['mantencion_success']);
 <?php endif; ?>
 
 
-<h2 class="container col-lg-8 text-center bg-dark">
+<h2 class="container col-lg-8 text-center ">
     Mantenciones
     <button id="generarPdf" class="btn btn-sm btn-outline-light text-center ">Generar PDF </button>
 </h2>
@@ -37,7 +37,7 @@ unset($_SESSION['mantencion_success']);
 <div class="container-fluid ">
     <div class="row">
         <div class="col-lg-2 "></div>
-        <div class="col-lg-8 bg-dark">
+        <div class="col-lg-8 >
             <div id="calendar"></div>
         </div>
         <div class="col-lg-2"></div>
