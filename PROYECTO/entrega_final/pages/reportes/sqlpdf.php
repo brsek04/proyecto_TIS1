@@ -239,7 +239,7 @@ $pdf->Ln(5);
 
 
 // Mostrar el ID del equipo con el costo más caro y su costo
-$pdf->Cell(0, 5, "ID del equipo con el costo más caro: $idEquipoMasCaro con un costo de $" . number_format($costoMasCaro, 2), 0, 1, 'C');
+$pdf->Cell(0, 5, "ID del equipo con el costo mas caro: $idEquipoMasCaro con un costo de $" . number_format($costoMasCaro, 2), 0, 1, 'C');
 $pdf->Cell(0, 5, "Costos totales: $" . $totalCosto, 0, 1, 'C');
 
 $pdf->Output();
